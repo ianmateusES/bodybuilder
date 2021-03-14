@@ -1,37 +1,61 @@
-## Welcome to GitHub Pages
+## Bem vindo ao Bodybuilder
 
-You can use the [editor on GitHub](https://github.com/ianmateusES/bodybuilder/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+<h4 align="center">
+  💪 Bodybuilder
+</h4>
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ianmateusES/bodybuilder.svg">
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/ianmateusES/bodybuilder.svg">
+  
+  <a href="https://github.com/ianmateusES/bodybuilder/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ianmateusES/bodybuilder.svg">
+  </a>
 
-### Markdown
+  <a href="https://github.com/ianmateusES/bodybuilder/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/ianmateusES/bodybuilder.svg">
+  </a>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+</p>
 
-```markdown
-Syntax highlighted code block
+<p align="center">
+  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-licença">Licença</a>
+</p>
 
-# Header 1
-## Header 2
-### Header 3
+<br>
 
-- Bulleted
-- List
+<p align="center">
+  <img alt="Frontend" src=".github/bodybuilder.png" width="100%">
+</p>
 
-1. Numbered
-2. List
+## :rocket: Tecnologias
 
-**Bold** and _Italic_ and `Code` text
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-[Link](url) and ![Image](src)
-```
+- [Node.js](https://nodejs.org/en/)
+- [React](https://reactjs.org)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## 💻 Projeto
 
-### Jekyll Themes
+O Bodybuilder é um software de auxílio a personais e nutricionistas no acompanhamento detalhado da evolução de seus alunos, com elaboração de treinos e dietas personalizados baseados em suas estatísticas.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ianmateusES/bodybuilder/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## 🤔 Como contribuir
 
-### Support or Contact
+- Faça um fork desse repositório;
+- Cria uma branch com a sua feature: `git checkout -b minha-feature`;
+- Faça commit das suas alterações: `git commit -m 'feat: Minha nova feature'`;
+- Faça push para a sua branch: `git push origin minha-feature`.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
+
+## :memo: Licença
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+
+---
+
+Feito com ♥ by team Bodybuilder :wave:
