@@ -32,7 +32,7 @@
   <img alt="Frontend" src=".github/bodybuilder.png" width="100%">
 </p>
 
-## :rocket: Tecnologias
+## 🚀 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
@@ -52,10 +52,10 @@ O Bodybuilder é um software de auxílio a personais e nutricionistas no acompan
 
 Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
 
-## :memo: Licença
+## 📝 Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
 ---
 
-Feito com ♥ by team Bodybuilder :wave:
+Feito com ♥ by team Bodybuilder 👋
