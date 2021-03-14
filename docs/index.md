@@ -27,7 +27,7 @@
 <br>
 
 <p align="center">
-  <img alt="Frontend" src=".github/bodybuilder.png" width="100%">
+  <img alt="Frontend" src="https://github.com/ianmateusES/bodybuilder/blob/main/docs/.github/bodybuilder.png?raw=true" width="100%">
 </p>
 
 ## 🚀 Tecnologias
