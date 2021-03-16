@@ -28,7 +28,7 @@ UserSchema.pre('save', async function save(next) {
 UserSchema.pre('findOneAndUpdate', async function update(next) {
   const userUpdate = this._update;
 
-  if (userUpdate.oldPassword) {
+  if (userUpdate.old_password) {
     userUpdate.password = await passwordEncrypt.encryptPassword(
       userUpdate.password,
     );
