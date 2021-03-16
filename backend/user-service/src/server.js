@@ -1,4 +1,5 @@
 import express from 'express';
+
 import App from './App';
 
 const server = express();
