@@ -3,7 +3,7 @@ import { celebrate, Segments, Joi } from 'celebrate';
 import ProfileController from '../app/controllers/ProfileController';
 import ensureAuthenticated from '../app/middleware/ensureAuthenticated';
 
-// http://localhost:3333/profile
+// http://localhost:3334/profile
 const profileRouter = Router();
 
 profileRouter.use(ensureAuthenticated);
@@ -24,8 +24,13 @@ profileRouter.put(
         is: Joi.exist(),
         then: Joi.valid(Joi.ref('password')).required(),
       }),
-      birthday: Joi.date(),
       telephone: Joi.string().max(11).min(9),
+      cref: Joi.string(),
+      address: Joi.string(),
+      number: Joi.when('address', {
+        is: Joi.exist(),
+        then: Joi.number().required(),
+      }),
       city: Joi.string(),
       uf: Joi.string().length(2),
     },

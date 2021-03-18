@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
-import UserController from '../app/controllers/UserController';
+import PersonalController from '../app/controllers/PersonalController';
 
-// http://localhost:3333/users
-const usersRouter = Router();
+// http://localhost:3334/personais
+const personaisRouter = Router();
 
-usersRouter.post(
+personaisRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
@@ -15,11 +15,14 @@ usersRouter.post(
       password_confirmation: Joi.string().required().valid(Joi.ref('password')),
       birthday: Joi.date().required(),
       telephone: Joi.string().max(11).min(9).required(),
+      cref: Joi.string().required(),
+      address: Joi.string().required(),
+      number: Joi.number().required(),
       city: Joi.string().required(),
       uf: Joi.string().length(2).required(),
     },
   }),
-  UserController.store,
+  PersonalController.store,
 );
 
-export default usersRouter;
+export default personaisRouter;
