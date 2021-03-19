@@ -1,5 +1,5 @@
-import MetaTreino from '../models/MetaTreino';
 import Treino from '../models/Treino';
+import ExecucaoExercicio from '../models/ExecucaoExercicio';
 import User from '../models/User';
 
 export default {
@@ -13,7 +13,7 @@ export default {
       return res.status(401).json({ error: 'Aluno não existe' });
     }
 
-    const treinos = await MetaTreino.find({
+    const treinos = await Treino.find({
       personal: id,
       aluno: id_aluno,
     });
@@ -25,12 +25,12 @@ export default {
     const { id } = req.perso;
     const { id_aluno, id_treino } = req.params;
 
-    const treino = await MetaTreino.findOne({
+    const treino = await Treino.findOne({
       personal: id,
       _id: id_treino,
       aluno: id_aluno,
     }).populate({
-      path: 'treinos',
+      path: 'list_exercicio',
       populate: {
         path: 'exercise',
         select: 'name',
@@ -47,42 +47,46 @@ export default {
   async update(req, res) {
     const { id } = req.perso;
     const { id_aluno, id_treino } = req.params;
-    let { treinos: updateTreinos } = req.body;
+    let { exercise_list: updateExercise_list } = req.body;
 
-    const metaTreino = await MetaTreino.findOne({
+    const treino = await Treino.findOne({
       _id: id_treino,
       personal: id,
       aluno: id_aluno,
     });
 
-    if (!metaTreino) {
+    if (!treino) {
       return res.status(400).json({ error: 'Treino não encontrado' });
     }
 
-    const updateTreinosId = updateTreinos.map(treino => treino._id);
-
-    const treinosIdRemove = metaTreino.treinos.filter(
-      treino => !updateTreinosId.includes(String(treino._id)),
+    const id_updateExercise_list = updateExercise_list.map(
+      exercise => exercise._id,
     );
 
-    const createTreino = [];
+    const exercise_listIdRemove = treino.exercise_list.filter(
+      exercise => !id_updateExercise_list.includes(String(exercise._id)),
+    );
 
-    updateTreinos = updateTreinos.filter(treino => {
-      if (!treino._id) {
-        const { _id, ...body } = treino;
-        createTreino.push(body);
-        return false;
+    const createExecucao_Exercicio = [];
+
+    updateExercise_list = updateExercise_list.filter(execucao_Exercicio => {
+      if (!execucao_Exercicio._id) {
+        const { _id, ...body } = execucao_Exercicio;
+        createExecucao_Exercicio.push(body);
+        return false && _id;
       }
       return true;
     });
 
-    const addTreino = await Treino.create(createTreino);
+    const addExecucao_Exercicio = await ExecucaoExercicio.create(
+      createExecucao_Exercicio,
+    );
 
-    updateTreinos = updateTreinos.concat(addTreino);
+    updateExercise_list = updateExercise_list.concat(addExecucao_Exercicio);
 
-    Object.assign(req.body, { treinos: updateTreinos });
+    Object.assign(req.body, { exercise_list: updateExercise_list });
 
-    const newTreino = await MetaTreino.findOneAndUpdate(
+    const newTreino = await Treino.findOneAndUpdate(
       { _id: id_treino, personal: id },
       req.body,
       {
@@ -94,7 +98,7 @@ export default {
       return res.status(401).json({ error: 'Atualização não realizada' });
     }
 
-    await Treino.deleteMany({ _id: treinosIdRemove });
+    await ExecucaoExercicio.deleteMany({ _id: exercise_listIdRemove });
 
     return res.json(newTreino);
   },
@@ -103,7 +107,7 @@ export default {
     const { id } = req.perso;
     const { id_aluno, id_treino } = req.params;
 
-    const treino = await MetaTreino.findOneAndRemove({
+    const treino = await Treino.findOneAndRemove({
       _id: id_treino,
       personal: id,
       aluno: id_aluno,

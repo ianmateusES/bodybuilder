@@ -4,11 +4,11 @@ import ensureAuthenticated from '../app/middleware/ensureAuthenticated';
 import TreinoAlunoController from '../app/controllers/TreinoAlunoController';
 
 // http://localhost:3334/treino-aluno
-const exercicioRouter = Router();
+const treinoAlunoRouter = Router();
 
-exercicioRouter.use(ensureAuthenticated);
+treinoAlunoRouter.use(ensureAuthenticated);
 
-exercicioRouter.get(
+treinoAlunoRouter.get(
   '/:id_aluno',
   celebrate({
     [Segments.PARAMS]: {
@@ -18,7 +18,7 @@ exercicioRouter.get(
   TreinoAlunoController.index,
 );
 
-exercicioRouter.get(
+treinoAlunoRouter.get(
   '/:id_aluno/treino/:id_treino',
   celebrate({
     [Segments.PARAMS]: {
@@ -29,7 +29,7 @@ exercicioRouter.get(
   TreinoAlunoController.show,
 );
 
-exercicioRouter.delete(
+treinoAlunoRouter.delete(
   '/:id_aluno/treino/:id_treino',
   celebrate({
     [Segments.PARAMS]: {
@@ -40,12 +40,12 @@ exercicioRouter.delete(
   TreinoAlunoController.destroy,
 );
 
-exercicioRouter.put(
+treinoAlunoRouter.put(
   '/:id_aluno/treino/:id_treino',
   celebrate({
     [Segments.BODY]: {
       objective: Joi.string(),
-      treinos: Joi.array()
+      exercise_list: Joi.array()
         .min(3)
         .items(
           Joi.object({
@@ -67,4 +67,4 @@ exercicioRouter.put(
   TreinoAlunoController.update,
 );
 
-export default exercicioRouter;
+export default treinoAlunoRouter;

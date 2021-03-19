@@ -1,24 +1,26 @@
 import mongoose from 'mongoose';
+import ExecucaoExercicio from './ExecucaoExercicio';
 
 const TreinoSchema = new mongoose.Schema({
-  division: {
-    type: String,
-    enum: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
-    required: true,
-  },
-  exercise: {
+  personal: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Exercicio',
+    ref: 'Personal',
     required: true,
   },
-  methodology: {
+  aluno: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Aluno',
+  },
+  objective: {
     type: String,
-    enum: ['Drop set', 'Biset', 'Fst-7', 'Descanso progressivo', 'Rest pause'],
-    required: true,
+    enum: ['Hipertrofia', 'Emagrecer', 'Definir'],
   },
-  series: Number,
-  repetitions: Number,
-  comments: String,
+  exercise_list: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Execucao_Exercicio',
+    },
+  ],
   created_at: {
     type: Date,
     default: Date.now(),
@@ -28,5 +30,29 @@ const TreinoSchema = new mongoose.Schema({
     default: Date.now(),
   },
 });
+
+MetaTreinoSchema.post(
+  'findOneAndRemove',
+  async function removeExecutionExercise(doc) {
+    const id_executionExercise = doc.exercise_list;
+
+    await ExecucaoExercicio.deleteMany({ _id: id_executionExercise });
+  },
+);
+
+MetaTreinoSchema.pre(
+  'findOneAndUpdate',
+  async function updateExecutionExercise(next) {
+    const { exercise_list } = this._update;
+
+    exercise_list.map(async exercise => {
+      const { _id, ...body } = exercise;
+      const res = await ExecucaoExercicio.updateOne({ _id }, body);
+      return res;
+    });
+
+    next();
+  },
+);
 
 export default mongoose.model('Treino', TreinoSchema);

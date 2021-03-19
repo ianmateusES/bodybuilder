@@ -7,6 +7,7 @@ import ExercicioController from '../app/controllers/ExercicioController';
 const exercicioRouter = Router();
 
 exercicioRouter.use(ensureAuthenticated);
+
 exercicioRouter.post(
   '/',
   celebrate({
@@ -16,7 +17,9 @@ exercicioRouter.post(
   }),
   ExercicioController.store,
 );
+
 exercicioRouter.get('/me', ExercicioController.index);
+
 exercicioRouter.delete(
   '/me/:id',
   celebrate({

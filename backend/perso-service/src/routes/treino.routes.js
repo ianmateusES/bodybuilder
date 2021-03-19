@@ -4,16 +4,17 @@ import ensureAuthenticated from '../app/middleware/ensureAuthenticated';
 import TreinoController from '../app/controllers/TreinoController';
 
 // http://localhost:3334/treino
-const exercicioRouter = Router();
+const treinoRouter = Router();
 
-exercicioRouter.use(ensureAuthenticated);
-exercicioRouter.post(
+treinoRouter.use(ensureAuthenticated);
+
+treinoRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
       aluno: Joi.string().required(),
       objective: Joi.string().required(),
-      treinos: Joi.array()
+      exercise_list: Joi.array()
         .min(3)
         .items(
           Joi.object({
@@ -30,4 +31,4 @@ exercicioRouter.post(
   TreinoController.store,
 );
 
-export default exercicioRouter;
+export default treinoRouter;
