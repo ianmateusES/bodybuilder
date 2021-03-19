@@ -31,7 +31,7 @@ const TreinoSchema = new mongoose.Schema({
   },
 });
 
-MetaTreinoSchema.post(
+TreinoSchema.post(
   'findOneAndRemove',
   async function removeExecutionExercise(doc) {
     const id_executionExercise = doc.exercise_list;
@@ -40,7 +40,7 @@ MetaTreinoSchema.post(
   },
 );
 
-MetaTreinoSchema.pre(
+TreinoSchema.pre(
   'findOneAndUpdate',
   async function updateExecutionExercise(next) {
     const { exercise_list } = this._update;
