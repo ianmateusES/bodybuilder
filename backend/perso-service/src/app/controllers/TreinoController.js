@@ -14,28 +14,6 @@ export default {
     return res.json(treinos);
   },
 
-  async show(req, res) {
-    const { id } = req.perso;
-    const { id: id_treino } = req.params;
-
-    const treino = await MetaTreino.findOne({
-      personal: id,
-      _id: id_treino,
-    }).populate({
-      path: 'treinos',
-      populate: {
-        path: 'exercise',
-        select: 'name',
-      },
-    });
-
-    if (!treino) {
-      return res.status(400).json({ error: 'Treino não encontrado' });
-    }
-
-    return res.json(treino);
-  },
-
   async store(req, res) {
     const { id } = req.perso;
     const { treinos } = req.body;
