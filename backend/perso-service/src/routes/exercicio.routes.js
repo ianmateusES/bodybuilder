@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { celebrate, Segments, Joi } from 'celebrate';
 import ensureAuthenticated from '../app/middleware/ensureAuthenticated';
 import ExercicioController from '../app/controllers/ExercicioController';
 
@@ -6,7 +7,24 @@ import ExercicioController from '../app/controllers/ExercicioController';
 const exercicioRouter = Router();
 
 exercicioRouter.use(ensureAuthenticated);
-exercicioRouter.post('/', ExercicioController.store);
+exercicioRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      id: Joi.string().required(),
+    },
+  }),
+  ExercicioController.store,
+);
 exercicioRouter.get('/me', ExercicioController.index);
+exercicioRouter.delete(
+  '/me/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().required(),
+    },
+  }),
+  ExercicioController.destroy,
+);
 
 export default exercicioRouter;
