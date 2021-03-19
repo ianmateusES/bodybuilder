@@ -5,6 +5,7 @@ import profileRouter from './profile.routes';
 import sessionRouter from './session.routes';
 import exercicioRouter from './exercicio.routes';
 import treinoRouter from './treino.routes';
+import treinoAlunoRouter from './treinoAluno.routes';
 
 const routes = Router();
 
@@ -13,5 +14,6 @@ routes.use('/sessions', sessionRouter);
 routes.use('/profile', profileRouter);
 routes.use('/exercicio', exercicioRouter);
 routes.use('/treinos', treinoRouter);
+routes.use('/treino-aluno', treinoAlunoRouter);
 
 export default routes;

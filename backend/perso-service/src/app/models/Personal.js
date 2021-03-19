@@ -39,6 +39,7 @@ const PersonalSchema = new mongoose.Schema({
 
 PersonalSchema.pre('save', async function save(next) {
   const personal = this;
+
   personal.password = await passwordEncrypt.encryptPassword(personal.password);
   next();
 });

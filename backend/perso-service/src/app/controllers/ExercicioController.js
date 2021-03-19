@@ -20,4 +20,20 @@ export default {
 
     return res.json(exercicio);
   },
+
+  async destroy(req, res) {
+    const { id } = req.perso;
+    const { id: id_exercicio } = req.params;
+
+    const treino = await Exercicio.findOneAndRemove({
+      _id: id_exercicio,
+      author: id,
+    });
+
+    if (!treino) {
+      return res.status(400).json({ error: 'Exercicio não encontrado' });
+    }
+
+    return res.status(200).send();
+  },
 };
