@@ -30,7 +30,15 @@ export default {
       _id: id_treino,
       aluno: id_aluno,
     }).populate({
-      path: 'list_exercicio',
+      path: 'exercise_list',
+      select: [
+        'division',
+        'exercise',
+        'methodology',
+        'series',
+        'repetitions',
+        'comments',
+      ],
       populate: {
         path: 'exercise',
         select: 'name',
