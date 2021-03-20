@@ -12,7 +12,7 @@ treinoRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      aluno: Joi.string().required(),
+      aluno: Joi.string().default(''),
       objective: Joi.string().required(),
       exercise_list: Joi.array()
         .min(3)
