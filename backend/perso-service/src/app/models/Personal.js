@@ -24,9 +24,6 @@ const PersonalSchema = new mongoose.Schema({
     required: 'CREF required',
   },
   address: String,
-  number: Number,
-  city: String,
-  uf: String,
   created_at: {
     type: Date,
     default: Date.now(),
