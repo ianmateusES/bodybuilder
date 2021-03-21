@@ -4,7 +4,7 @@
 # Sumário de Documentação
 <ol>
   <li>
-    <a href="./documents/Requisitos-Funcional/Requisitos-Funcionais.pdf">Documento de Requisitos Funcionais</a>
+    <a href="./Requisitos-Funcional/Requisitos-Funcionais.pdf">Documento de Requisitos Funcionais</a>
     <ul>
       <li>
         Este documentos reune os requisitos funcionais priorizados pelo Team BodyBuilder.
@@ -12,7 +12,7 @@
     </ul>
   </li>
   <li>
-    <a href="./documents/Requisitos-Não-Funcional/Requisitos-Não-Funcional.pdf">Documento de Requisitos não Funcionais</a>
+    <a href="./Requisitos-Não-Funcional/Requisitos-Não-Funcional.pdf">Documento de Requisitos não Funcionais</a>
     <ul>
       <li>
         Este documentos reune os requisitos não funcionais priorizados pelo Team BodyBuilder.
@@ -20,69 +20,69 @@
     </ul>
   </li>
   <li>
-    <a href="./documents/Diagrama-caso-uso/PersoFit.png">Diagrama de casos de uso</a>
+    <a href="./Diagrama-caso-uso/PersoFit.png">Diagrama de casos de uso</a>
     <ul>
       <li>
         A imagem a baixo reune os principais casos de uso que foram levantados pelo stackholders.
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-caso-uso/PersoFit.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-caso-uso/PersoFit.png">
       </li>
     </ul>
   </li>
   <li>
-    <a href="./documents/Diagrama-classes/DiagramaDeClasses-Sistema.png">Diagrama de classe</a>
+    <a href="./Diagrama-classes/DiagramaDeClasses-Sistema.png">Diagrama de classe</a>
     <ul>
       <li>
         A imagem a baixo reune as classes do sistema que foram levantados pelas analises do diagrama de caso de uso.
-        <img alt="Diagrama de classe" src="./documents/Diagrama-classes/DiagramaDeClasses-Sistema.png">
+        <img alt="Diagrama de classe" src="./Diagrama-classes/DiagramaDeClasses-Sistema.png">
       </li>
     </ul>
   </li>
   <li>
-    <a href="./documents/Diagrama-sequencia/">Diagrama de sequência</a>
+    <a href="./Diagrama-sequencia/">Diagrama de sequência</a>
     <ul>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Personal_com_exercicio.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Personal_com_exercicio.png">
       </li>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Personal_com_treino.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Personal_com_treino.png">
       </li>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
       </li>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Personal_com_dieta.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Personal_com_dieta.png">
       </li>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Açoes_prof_alunos.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_prof_alunos.png">
       </li>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
       </li>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
       </li>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
       </li>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
       </li>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
       </li>
       <li>
         Descrição
-        <img alt="Diagrama de caso de uso" src="./documents/Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
       </li>
     </ul>
   </li>
