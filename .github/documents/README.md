@@ -20,6 +20,22 @@
     </ul>
   </li>
   <li>
+    <a href="./Projeto-UI">Documento do projeto UI</a>
+    <ul>
+      <li>
+        Este documentos reune todas as telas do projeto priorizados pelo Team BodyBuilder.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="./Relatorio-BodyBuilder/Relatorio-BodyBuilder.pdf">Relatorio BodyBuilder</a>
+    <ul>
+      <li>
+        Este documentos reune o relatorio final do projeto priorizados pelo Team BodyBuilder.
+      </li>
+    </ul>
+  </li>
+  <li>
     <a href="./Diagrama-caso-uso/PersoFit.png">Diagrama de casos de uso</a>
     <ul>
       <li>
@@ -41,48 +57,48 @@
     <a href="./Diagrama-sequencia/">Diagrama de sequência</a>
     <ul>
       <li>
-        Descrição
+        Diagrama de Sequência de Personal com Exercício
         <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Personal_com_exercicio.png">
       </li>
       <li>
-        Descrição
+        Diagrama de Sequência de Personal com Treino
         <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Personal_com_treino.png">
       </li>
       <li>
-        Descrição
+        Diagrama de Sequência que compõe ações do Personal em Exercício e Treino.
         <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
       </li>
       <li>
-        Descrição
+        Diagrama de Sequência de Personal com Dieta
         <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Personal_com_dieta.png">
       </li>
       <li>
-        Descrição
+        Diagrama de Sequência com ações que profissionais exercem em um aluno
         <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_prof_alunos.png">
       </li>
       <li>
-        Descrição
+        Diagrama de Sequência que compõe ações do Personal em Exercício e Treino
         <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
       </li>
       <li>
-        Descrição
-        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+        Diagrama de BD MER
+        <img alt="Diagrama de caso de uso" src="./Diagrama-BD-MER/Logico_1.png">
       </li>
       <li>
-        Descrição
-        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+       <li>
+        Diagrama Relacional 
+        <img alt="Diagrama de caso de uso" src="./Diagrama-ER/Modelo-Relacional.png" >
+      </li>
+        Diagrama Entidade Relacional Aluno
+        <img alt="Diagrama de caso de uso" src="./Diagrama-ER/Modelo-Relacional-Aluno.png" >
       </li>
       <li>
-        Descrição
-        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+        Diagrama Entidade Relacional Personal
+        <img alt="Diagrama de caso de uso" src="./Diagrama-ER/Modelo-Relacional-Personal.png" >
       </li>
       <li>
-        Descrição
-        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
-      </li>
-      <li>
-        Descrição
-        <img alt="Diagrama de caso de uso" src="./Diagrama-sequencia/DiagramaSequencia-Açoes_personal_exercicio_treino.png">
+        Diagrama Entidade Relacional Nutricionista
+        <img alt="Diagrama de caso de uso" src="./Diagrama-ER/Modelo-Relacional-Nutricionista.png" >
       </li>
     </ul>
   </li>
