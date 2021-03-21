@@ -27,12 +27,6 @@ profileRouter.put(
       telephone: Joi.string().max(11).min(9),
       cref: Joi.string(),
       address: Joi.string(),
-      number: Joi.when('address', {
-        is: Joi.exist(),
-        then: Joi.number().required(),
-      }),
-      city: Joi.string(),
-      uf: Joi.string().length(2),
     },
   }),
   ProfileController.update,
