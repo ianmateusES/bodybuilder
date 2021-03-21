@@ -36,7 +36,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Node.js](https://nodejs.org/en/)
 - [Java](https://www.oracle.com/br/java/technologies/)
-- [Electron](https://www.electronjs.org)
+<!-- - [Electron](https://www.electronjs.org) -->
 
 ## 💻 Projeto
 
