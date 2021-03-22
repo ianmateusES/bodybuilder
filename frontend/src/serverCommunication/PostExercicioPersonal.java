@@ -41,7 +41,6 @@ public class PostExercicioPersonal {
             con.connect();
             
             JSONObject jsonParam = new JSONObject();
-            jsonParam.put("author", PersonalLogado.getInstance().getPersonal().getId());
             jsonParam.put("name", name);
             jsonParam.put("group", group);
             
