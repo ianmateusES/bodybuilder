@@ -42,7 +42,7 @@
     <ul>
       <li>
         A imagem a baixo reune os principais casos de uso que foram levantados pelo stackholders.
-        <img alt="Diagrama de caso de uso" src="./Diagrama-caso-uso/PersoFit.png">
+        <img alt="Diagrama de caso de uso" src="./Diagrama-caso-uso/BodyBuilder.png">
       </li>
     </ul>
   </li> <!-- Topico 5 end -->
