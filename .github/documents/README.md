@@ -1,5 +1,3 @@
-# Documentação do BodyBuilder
-
 # Sumário de Documentação
 <ol>
   
