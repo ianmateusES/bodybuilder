@@ -20,6 +20,7 @@
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-documentação-do-projeto">Documentação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-licença">Licença</a>
 </p>
@@ -27,7 +28,7 @@
 <br>
 
 <p align="center">
-  <img alt="Frontend" src="https://github.com/ianmateusES/bodybuilder/blob/main/docs/.github/bodybuilder.png?raw=true" width="100%">
+  <img alt="Frontend" src="./docs/.github/bodybuilder.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
@@ -42,6 +43,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 O Bodybuilder é um software de auxílio a personais e nutricionistas no acompanhamento detalhado da evolução de seus alunos, com elaboração de treinos e dietas personalizados baseados em suas estatísticas. O aluno acessa sua série e acompanha todas as orientações dadas pelo personal, assim como ele pode acessar sua dieta orientada pelo nutricionista. O aplicativo é prático, que foi criado para descomplicar a gestão de alunos em qualquer local que esteja.
 
+## 📁 Documentação do projeto
+  
+  <a href="./.github/documents/">Súmario de documentação do projeto</a>
+  
 ## 👩‍💻 Time dev
 
 - Adan Bueno
