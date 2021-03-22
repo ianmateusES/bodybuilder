@@ -12,7 +12,8 @@ exercicioRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      id: Joi.string().required(),
+      name: Joi.string().required(),
+      group: Joi.string().required(),
     },
   }),
   ExercicioController.store,
