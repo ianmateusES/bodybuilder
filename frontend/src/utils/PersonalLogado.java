@@ -1,15 +1,24 @@
+/**
+ * Está classe extende a classe abstrata UsuarioLogado e utiliza o 
+ * padrão Singleton para se certificar que apenas um personal
+ * esteja logado no sistem
+ *
+ */
 package utils;
-// Singleton
-import modelo.Personal;
 
-public final class PersonalLogado {
-    private static volatile PersonalLogado personalLogado;
-    private Personal personal;
-    private String token;
+import model.Personal;
+import model.Usuario;
+
+public final class PersonalLogado extends UsuarioLogado{
     
-    private PersonalLogado() {}
+    private static volatile PersonalLogado personalLogado; // requisito para o Singleton
+    private Personal personal; // objeto global da classe Personal
+    private String token; // Atributo global de token, ele é gerado automaticamente no login
     
-    public static PersonalLogado getInstance() {
+    private PersonalLogado() {} // requisito para o Singleton
+    
+    // requisito para o Singleton
+    public static PersonalLogado getInstance() { 
         if (personalLogado == null) {
             synchronized (PersonalLogado.class) {
                 if (personalLogado == null) {
@@ -20,28 +29,34 @@ public final class PersonalLogado {
         return personalLogado;
     }
     
-    public void setLogin(Personal personal, String token) {
-        this.personal = personal;
-        this.token = token;
+    // instância o objeto personal e a variável token
+    public void setLogin(Usuario usuario, String token) {
+        this.personal = (Personal) usuario;
+        this.setToken(token); // Chama o método setToken
     }
     
-    public void setUpdateUser(Personal personal) {
-        this.personal = personal;
+    // Atualiza o objeto personal
+    public void setUpdateUser(Usuario usuario) {
+        this.personal = (Personal) usuario;
     }
 
+    // Seta o token e o personal como null
     public void setLogout() {
         this.personal = null;
         this.token = null;
     }
 
-    public Personal getPersonal() {
+    //Retorna o personal
+    public Personal getUsuario() {
         return this.personal;
     }
     
+    // instância a variável token
     public void setToken(String token) {
        this.token = token;
     }
 
+    // pega a variável token
     public String getToken() {
         return this.token;
     }
