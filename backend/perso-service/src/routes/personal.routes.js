@@ -14,7 +14,7 @@ personaisRouter.post(
       password: Joi.string().min(6).required(),
       password_confirmation: Joi.string().required().valid(Joi.ref('password')),
       birthday: Joi.date().required(),
-      telephone: Joi.string().max(11).min(9).required(),
+      telephone: Joi.string().required(),
       cref: Joi.string().required(),
       address: Joi.string().required(),
     },
