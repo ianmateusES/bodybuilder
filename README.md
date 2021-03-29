@@ -45,7 +45,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 O Bodybuilder é um software de auxílio a personais e nutricionistas no acompanhamento detalhado da evolução de seus alunos, com elaboração de treinos e dietas personalizados baseados em suas estatísticas. O aluno acessa sua série e acompanha todas as orientações dadas pelo personal, assim como ele pode acessar sua dieta orientada pelo nutricionista. O aplicativo é prático, que foi criado para descomplicar a gestão de alunos em qualquer local que esteja.
 
 <a href="https://www.youtube.com/watch?v=8Fmom2yW-2o" target="_blank" align="center">
-  <img src="./assets/challenge-02-thumb.png">
+  <img src="./docs/.github/youtube.jpeg">
 </a>
 
 ## 📁 Documentação do projeto
