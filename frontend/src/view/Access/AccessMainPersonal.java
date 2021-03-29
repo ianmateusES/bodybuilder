@@ -17,8 +17,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.ToolTipManager;
-import javax.swing.plaf.basic.BasicTableUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import view.Insert.InserExercicio;
@@ -29,18 +27,13 @@ import view.Insert.IsertAluno;
  * @author vivi
  */
 public final class AccessMainPersonal extends javax.swing.JFrame {
+
+
     private static AccessMainPersonal tela_personal;
     
     private AccessMainPersonal() {
         initComponents();
-        
-        setNomeUsuario();
-        setNumAniversariantes();
-        setNumAlunosAtivos();
-        setNumMeusExercicios();
-
-        String [] campos_tabela = {"id_verdadeiro", "id", "nome", "status"};
-        mudarTela("link_inicio", "Inicio", "panel_inicio", campos_tabela, AlunoController.listaAlunosUsuario(), atualizar_inicio, cadastrar_inicio, null);
+        iniciar();
     }
     
     public static AccessMainPersonal getInstance(){
@@ -63,8 +56,6 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
         personal = new javax.swing.JPanel();
         panel_navegacao = new javax.swing.JPanel();
         link_inicio = new javax.swing.JLabel();
-        link_treinos = new javax.swing.JLabel();
-        link_padroes = new javax.swing.JLabel();
         link_exercicios = new javax.swing.JLabel();
         link_alunos = new javax.swing.JLabel();
         link_suporte = new javax.swing.JLabel();
@@ -82,34 +73,36 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
         panel_main = new javax.swing.JPanel();
         txt_aniversariantes = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        panel_biblioteca = new javax.swing.JPanel();
         panel_exercicio = new javax.swing.JPanel();
         panel_main2 = new javax.swing.JPanel();
         txt_exercicio = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        panel_lista = new javax.swing.JPanel();
         panel_alunos = new javax.swing.JPanel();
         panel_main1 = new javax.swing.JPanel();
         txt_alunos_ativos = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btn_excluir = new java.awt.Button();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(700, 500));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(700, 400));
+        setMinimumSize(new java.awt.Dimension(700, 400));
         setResizable(false);
 
-        main.setMaximumSize(new java.awt.Dimension(700, 500));
-        main.setMinimumSize(new java.awt.Dimension(700, 500));
+        main.setMaximumSize(new java.awt.Dimension(700, 400));
+        main.setMinimumSize(new java.awt.Dimension(700, 400));
+        main.setPreferredSize(new java.awt.Dimension(700, 400));
         main.setLayout(new java.awt.CardLayout());
 
         personal.setBackground(new java.awt.Color(254, 254, 254));
-        personal.setMaximumSize(new java.awt.Dimension(700, 500));
-        personal.setMinimumSize(new java.awt.Dimension(700, 500));
+        personal.setMaximumSize(new java.awt.Dimension(700, 400));
+        personal.setMinimumSize(new java.awt.Dimension(700, 400));
+        personal.setPreferredSize(new java.awt.Dimension(700, 400));
 
         panel_navegacao.setBackground(new java.awt.Color(68, 68, 68));
-        panel_navegacao.setMaximumSize(new java.awt.Dimension(230, 500));
-        panel_navegacao.setMinimumSize(new java.awt.Dimension(230, 500));
+        panel_navegacao.setMaximumSize(new java.awt.Dimension(230, 370));
+        panel_navegacao.setMinimumSize(new java.awt.Dimension(230, 370));
         panel_navegacao.setName(""); // NOI18N
-        panel_navegacao.setPreferredSize(new java.awt.Dimension(230, 500));
+        panel_navegacao.setPreferredSize(new java.awt.Dimension(230, 370));
 
         link_inicio.setBackground(new java.awt.Color(218, 214, 210));
         link_inicio.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
@@ -121,32 +114,6 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
         link_inicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 link_inicioMouseClicked(evt);
-            }
-        });
-
-        link_treinos.setBackground(new java.awt.Color(218, 214, 210));
-        link_treinos.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
-        link_treinos.setForeground(new java.awt.Color(254, 254, 254));
-        link_treinos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/img_biblioteca.png"))); // NOI18N
-        link_treinos.setText(" Biblioteca de Treinos");
-        link_treinos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        link_treinos.setName("link_treinos"); // NOI18N
-        link_treinos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                link_treinosMouseClicked(evt);
-            }
-        });
-
-        link_padroes.setBackground(new java.awt.Color(218, 214, 210));
-        link_padroes.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
-        link_padroes.setForeground(new java.awt.Color(254, 254, 254));
-        link_padroes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/img_padroes.png"))); // NOI18N
-        link_padroes.setText(" Padroes de Exercicio");
-        link_padroes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        link_padroes.setName("link_padroes"); // NOI18N
-        link_padroes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                link_padroesMouseClicked(evt);
             }
         });
 
@@ -215,20 +182,23 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
         txt_nome_usuario.setText("Nome usuario");
         txt_nome_usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txt_nome_usuario.setName("txt_nome_usuario"); // NOI18N
+        txt_nome_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_nome_usuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_navegacaoLayout = new javax.swing.GroupLayout(panel_navegacao);
         panel_navegacao.setLayout(panel_navegacaoLayout);
         panel_navegacaoLayout.setHorizontalGroup(
             panel_navegacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(link_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(link_padroes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(link_treinos, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
             .addComponent(link_alunos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(link_exercicios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(link_exercicios, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
             .addComponent(link_suporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(link_sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(txt_navegacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(txt_nome_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(link_sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panel_navegacaoLayout.setVerticalGroup(
             panel_navegacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,19 +209,15 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
                 .addComponent(txt_navegacao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(link_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(link_treinos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(link_padroes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(link_exercicios, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(link_alunos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(link_suporte, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(link_sair, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         tabela.setBackground(new java.awt.Color(254, 254, 254));
@@ -365,22 +331,6 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
 
         panel_control.add(panel_main, "panel_inicio");
 
-        panel_biblioteca.setMaximumSize(new java.awt.Dimension(215, 80));
-        panel_biblioteca.setMinimumSize(new java.awt.Dimension(215, 80));
-
-        javax.swing.GroupLayout panel_bibliotecaLayout = new javax.swing.GroupLayout(panel_biblioteca);
-        panel_biblioteca.setLayout(panel_bibliotecaLayout);
-        panel_bibliotecaLayout.setHorizontalGroup(
-            panel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 215, Short.MAX_VALUE)
-        );
-        panel_bibliotecaLayout.setVerticalGroup(
-            panel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-        );
-
-        panel_control.add(panel_biblioteca, "panel_biblioteca");
-
         panel_exercicio.setMaximumSize(new java.awt.Dimension(215, 80));
         panel_exercicio.setMinimumSize(new java.awt.Dimension(215, 80));
         panel_exercicio.setPreferredSize(new java.awt.Dimension(215, 80));
@@ -439,22 +389,6 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
         );
 
         panel_control.add(panel_exercicio, "panel_exercicio");
-
-        panel_lista.setMaximumSize(new java.awt.Dimension(215, 80));
-        panel_lista.setMinimumSize(new java.awt.Dimension(215, 80));
-
-        javax.swing.GroupLayout panel_listaLayout = new javax.swing.GroupLayout(panel_lista);
-        panel_lista.setLayout(panel_listaLayout);
-        panel_listaLayout.setHorizontalGroup(
-            panel_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 215, Short.MAX_VALUE)
-        );
-        panel_listaLayout.setVerticalGroup(
-            panel_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-        );
-
-        panel_control.add(panel_lista, "card2");
 
         panel_alunos.setMaximumSize(new java.awt.Dimension(215, 80));
         panel_alunos.setMinimumSize(new java.awt.Dimension(215, 80));
@@ -515,6 +449,13 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
 
         panel_control.add(panel_alunos, "panel_alunos");
 
+        btn_excluir.setActionCommand("-");
+        btn_excluir.setBackground(new java.awt.Color(68, 68, 68));
+        btn_excluir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_excluir.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
+        btn_excluir.setForeground(new java.awt.Color(254, 254, 254));
+        btn_excluir.setLabel("-");
+
         javax.swing.GroupLayout personalLayout = new javax.swing.GroupLayout(personal);
         personal.setLayout(personalLayout);
         personalLayout.setHorizontalGroup(
@@ -524,45 +465,50 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(personalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_titulo_tela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(table_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .addComponent(table_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, personalLayout.createSequentialGroup()
                         .addComponent(input_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(personalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, personalLayout.createSequentialGroup()
-                                .addComponent(btn_atualizar_tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(personalLayout.createSequentialGroup()
+                                .addComponent(btn_atualizar_tabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, personalLayout.createSequentialGroup()
+                                .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(personalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(personalLayout.createSequentialGroup()
                     .addGap(242, 242, 242)
                     .addComponent(panel_control, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(358, Short.MAX_VALUE)))
+                    .addContainerGap(243, Short.MAX_VALUE)))
         );
         personalLayout.setVerticalGroup(
             personalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_navegacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, personalLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(txt_titulo_tela)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(personalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_atualizar_tabela, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(personalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(input_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(personalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(personalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(input_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_excluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(table_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addComponent(table_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+            .addComponent(panel_navegacao, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addGroup(personalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(personalLayout.createSequentialGroup()
                     .addGap(69, 69, 69)
                     .addComponent(panel_control, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(351, Short.MAX_VALUE)))
+                    .addContainerGap(251, Short.MAX_VALUE)))
         );
 
         main.add(personal, "card2");
@@ -583,33 +529,18 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void link_inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_inicioMouseClicked
-        String [] campos_tabela = {"id_verdadeiro", "id", "nome", "status"};
-        mudarTela("link_inicio", "Inicio", "panel_inicio", campos_tabela, AlunoController.listaAlunosUsuario(), atualizar_inicio, cadastrar_inicio, null);
+        String [] campos_tabela = {"id_verdadeiro", "id", "nome"};
+        mudarTela("link_inicio", "Inicio dos Treinos", "panel_inicio", campos_tabela, AlunoController.listaAlunosUsuarioSemStatus(), atualizar_inicio, cadastrar_inicio, excluir_aluno);
     }//GEN-LAST:event_link_inicioMouseClicked
     
-    private void link_treinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_treinosMouseClicked
-        mudarFonte("link_treinos");
-        txt_titulo_tela.setText("Biblioteca de Treinos");
-        
-        switchPanel("panel_inicio");
-        
-        String [] campos_tabela = {"id_verdadeiro", "id", "nome", "status"};
-        preencherTabela(AlunoController.listaAlunosUsuario(), campos_tabela);
-        
-        btn_atualizar_tabela.addMouseListener(atualizar_inicio);
-        btn_cadastrar.addMouseListener(cadastrar_inicio);
-        tabela.addMouseListener(cadastrar_inicio);
-
-    }//GEN-LAST:event_link_treinosMouseClicked
-
     private void link_exerciciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_exerciciosMouseClicked
         String [] campos_tabela = {"id_verdadeiro", "id", "nome", "grupo", "autor"};
-        mudarTela("link_exercicios", "Lista de Exercicios", "panel_exercicio", campos_tabela, ExercicioController.listaExercicios(), atualizar_exercicio, cadastrar_exercicio, tabela_exercicio);
+        mudarTela("link_exercicios", "Lista de Exercicios", "panel_exercicio", campos_tabela, ExercicioController.listaExercicios(), atualizar_exercicio, cadastrar_exercicio, excluir_exercicio);
     }//GEN-LAST:event_link_exerciciosMouseClicked
 
     private void link_alunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_alunosMouseClicked
         String [] campos_tabela = {"id_verdadeiro", "id", "nome", "status"};
-        mudarTela("link_alunos", "Alunos", "panel_alunos", campos_tabela, AlunoController.listaAlunosUsuario(), atualizar_exercicio, cadastrar_inicio, null);
+        mudarTela("link_alunos", "Alunos", "panel_alunos", campos_tabela, AlunoController.listaAlunosUsuario(), atualizar_exercicio, cadastrar_aluno, excluir_aluno);
     }//GEN-LAST:event_link_alunosMouseClicked
 
     private void link_suporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_suporteMouseClicked
@@ -640,10 +571,9 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
        pesquisarUsuario(input_pesquisar.getText());
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
-    private void link_padroesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_padroesMouseClicked
-        mudarFonte("link_padroes");
-        txt_titulo_tela.setText("Padroes de Exercicio");
-    }//GEN-LAST:event_link_padroesMouseClicked
+    private void txt_nome_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_nome_usuarioMouseClicked
+        AcessConta.getInstance().setVisible(true);
+    }//GEN-LAST:event_txt_nome_usuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -684,6 +614,7 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btn_atualizar_tabela;
     private java.awt.Button btn_cadastrar;
+    private java.awt.Button btn_excluir;
     private java.awt.Button btn_pesquisar;
     private java.awt.TextField input_pesquisar;
     private javax.swing.JLabel jLabel1;
@@ -692,16 +623,12 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
     private javax.swing.JLabel link_alunos;
     private javax.swing.JLabel link_exercicios;
     private javax.swing.JLabel link_inicio;
-    private javax.swing.JLabel link_padroes;
     private javax.swing.JLabel link_sair;
     private javax.swing.JLabel link_suporte;
-    private javax.swing.JLabel link_treinos;
     private javax.swing.JPanel main;
     private javax.swing.JPanel panel_alunos;
-    private javax.swing.JPanel panel_biblioteca;
     private javax.swing.JPanel panel_control;
     private javax.swing.JPanel panel_exercicio;
-    private javax.swing.JPanel panel_lista;
     private javax.swing.JPanel panel_main;
     private javax.swing.JPanel panel_main1;
     private javax.swing.JPanel panel_main2;
@@ -734,7 +661,6 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
             linha_conteudo = "";
         }
     }
-    
     private void preencherTabela(ArrayList<String> dados, String [] campos_colunas){
          // Constroi um parâmetro de tabela que começa com 0 linha, 0 coluna
         DefaultTableModel tbm = (DefaultTableModel) tabela.getModel();
@@ -751,7 +677,7 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
                 //Adiciona a linha de acordo com o contador
                 tbm.addRow(new String[i]);
                 String[] campo_separado = dados.get(i).split("/");
-
+                
                 for(int j = 0; j <= campo_separado.length; j++){
                     if(j == 1){
                         tabela.setValueAt((i+1), i, j);
@@ -815,12 +741,11 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
     private void setNumAlunosAtivos(){
         int alunosAtivos = AlunoController.numAlunosAtivos();
         txt_alunos_ativos.setText(alunosAtivos+ " alunos ativos");
-   }
-    
+    }
     private void setNumMeusExercicios(){
         int exercicios = ExercicioController.numExerciciosUsuario();
         txt_exercicio.setText(exercicios+ " exercicios sao meus");
-   }
+    }
 
     private void mudarTela(String link, String titulo, String panel, String [] campos_tabela, ArrayList<String> valores_tabela, MouseAdapter atualizar, MouseAdapter cadastrar, MouseAdapter tabela_click){
         mudarFonte(link);
@@ -845,20 +770,19 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
         
         btn_cadastrar.addMouseListener(cadastrar);
         
-        a = tabela.getMouseListeners();
-        if(a.length > 1){
-            for(int i = 2; i < a.length; i++){
-                tabela.removeMouseListener(a[i]);
-            }
+        a = btn_excluir.getMouseListeners();
+        for(int i = 0; i < a.length; i++){
+            btn_excluir.removeMouseListener(a[i]);
         }
         
-        tabela.addMouseListener(tabela_click);
+        btn_excluir.addMouseListener(tabela_click);
     }
 
+    
     MouseAdapter atualizar_inicio = new MouseAdapter() { 
         public void mouseClicked(MouseEvent me) { 
-            String [] campos_tabela = {"id_verdadeiro", "id", "nome", "status"};
-            preencherTabela(AlunoController.listaAlunosUsuario(), campos_tabela);
+            String [] campos_tabela = {"id_verdadeiro", "id", "nome"};
+            preencherTabela(AlunoController.listaAlunosUsuarioSemStatus(), campos_tabela);
         } 
     };
     MouseAdapter atualizar_exercicio = new MouseAdapter() { 
@@ -867,10 +791,22 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
             preencherTabela(ExercicioController.listaExercicios(), campos_tabela);
         } 
     };
+    MouseAdapter atualizar_aluno = new MouseAdapter() { 
+        public void mouseClicked(MouseEvent me) { 
+            String [] campos_tabela = {"id_verdadeiro", "id", "nome", "status"};
+            preencherTabela(AlunoController.listaAlunosUsuario(), campos_tabela);
+        } 
+    };
+    
     
     MouseAdapter cadastrar_inicio = new MouseAdapter() { 
         public void mouseClicked(MouseEvent me) { 
-            IsertAluno.getInstance().setVisible(true);
+            int linha = tabela.getSelectedRow();
+            if(linha >= 0) {
+                AccessAlunoTreino.getInstance(tabela.getValueAt(linha, 0).toString()).setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(AccessMainPersonal.getInstance(),"SELECIONE UM ALUNO", "Mensagem do sistema", JOptionPane.ERROR_MESSAGE);
+            }
         } 
     };
     MouseAdapter cadastrar_exercicio = new MouseAdapter() { 
@@ -878,26 +814,63 @@ public final class AccessMainPersonal extends javax.swing.JFrame {
             InserExercicio.getInstance().setVisible(true);
         } 
     };
+    MouseAdapter cadastrar_aluno = new MouseAdapter() { 
+        public void mouseClicked(MouseEvent me) { 
+            IsertAluno.getInstance().setVisible(true);
+        } 
+    };
+   
     
-    MouseAdapter tabela_exercicio = new MouseAdapter() { 
+    MouseAdapter excluir_exercicio = new MouseAdapter() { 
         public void mouseClicked(MouseEvent me) { 
             int linha = tabela.getSelectedRow();
                                
-            if(linha > 0) {
+            if(linha >= 0) {
                 String id = tabela.getValueAt(linha, 0).toString();
-                Object[] options = { "Nao", "Sim" };
-                int n = JOptionPane.showOptionDialog(null, "Deseja mesmo apagar linha selecionada?", "Mensagem do sistema", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,  null, options, options[1]);
-                if(n == 1){
-                    if(ExercicioController.deletarExercicio(id)){
-                        JOptionPane.showMessageDialog(AccessMainPersonal.getInstance(),"LINHA DELETADA DO SISTEMA", "Mensagem do sistema", JOptionPane.PLAIN_MESSAGE);
-                    }else{
-                        JOptionPane.showMessageDialog(AccessMainPersonal.getInstance(),"ERRO AO DELETAR", "Mensagem do sistema", JOptionPane.ERROR_MESSAGE);
+                String autor = tabela.getValueAt(linha, 4).toString();
+                if(autor.equalsIgnoreCase("system")){
+                    JOptionPane.showMessageDialog(AccessMainPersonal.getInstance(),"IMPOSSIVEL DELETAR EXERCICIO DO SISTEMA", "Mensagem do sistema", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    Object[] options = { "Nao", "Sim" };
+                    int n = JOptionPane.showOptionDialog(null, "Deseja mesmo apagar linha selecionada?", "Mensagem do sistema", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,  null, options, options[1]);
+                    if(n == 1){
+                        if(ExercicioController.deletarExercicio(id)){
+                            JOptionPane.showMessageDialog(AccessMainPersonal.getInstance(),"LINHA DELETADA DO SISTEMA", "Mensagem do sistema", JOptionPane.PLAIN_MESSAGE);
+                        }else{
+                            JOptionPane.showMessageDialog(AccessMainPersonal.getInstance(),"ERRO AO DELETAR", "Mensagem do sistema", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
                 }
+                
+            }                   
+        }
+    };
+    MouseAdapter excluir_aluno = new MouseAdapter() { 
+        public void mouseClicked(MouseEvent me) { 
+            int linha = tabela.getSelectedRow();
+            if(linha >= 0) {
+                JOptionPane.showMessageDialog(AccessMainPersonal.getInstance(),"APENAS ALUNOS PODEM DELETAR SUAS CONTAS", "Mensagem do sistema", JOptionPane.ERROR_MESSAGE);
             }                   
         }
     };
     
-     
+     MouseAdapter tabela_aluno = new MouseAdapter() { 
+        public void mouseClicked(MouseEvent me) { 
+            int linha = tabela.getSelectedRow();
+            if(linha >= 0) {
+                
+            }                   
+        }
+    };
+    
+    private void iniciar(){
+        setNomeUsuario();
+        setNumAniversariantes();
+        setNumAlunosAtivos();
+        setNumMeusExercicios();
 
+        String [] campos_tabela = {"id_verdadeiro", "id", "nome"};
+        mudarTela("link_inicio", "Inicio dos Treinos", "panel_inicio", campos_tabela, AlunoController.listaAlunosUsuarioSemStatus(), atualizar_inicio, cadastrar_inicio, excluir_aluno);
+    }
+     
 }

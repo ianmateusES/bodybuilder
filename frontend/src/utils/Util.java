@@ -6,6 +6,7 @@ package utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import org.json.JSONObject;
 
 public class Util {
@@ -33,6 +34,20 @@ public class Util {
             }
             parametros = jsonParam.toString();
         }
+        return parametros;
+    }
+    
+    public static String converteObjetoExercicioEmJson(String aluno, String objetivo, ArrayList<ExercicioList> exercicio){
+        String parametros = null;
+        JSONObject jsonParam = new JSONObject();
+
+        jsonParam.put("objective", objetivo);
+
+        jsonParam.put("aluno", aluno);
+
+        jsonParam.put("exercise_list", exercicio);
+        parametros = jsonParam.toString();
+
         return parametros;
     }
 }

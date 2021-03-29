@@ -14,7 +14,6 @@ import java.util.LinkedList;
 public class Invocador {
     public static int Apagado = 1;
     //public static int Italico = 2;
-    
     LinkedList<Comando> comandos;
     static Invocador invocador;
     
@@ -35,11 +34,6 @@ public class Invocador {
             comando = new TextoApagadoComando(textoInput, novoTexto);
             this.comandos.add(comando);
         }
-        
-        /*else if (tipoComando == Invocador.Italico){
-            comando = new ItalicoComando(fontAnterior);
-            this.comandos.add(comando);
-        }*/
         
         if(comando != null){
             return comando.executa();

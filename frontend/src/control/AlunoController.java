@@ -39,6 +39,36 @@ public class AlunoController {
         return alunos;
     }
     
+    // Pega a lista enviada do backend e manda uma String com os alunos para view ou null
+    public static ArrayList<String> listaAlunosUsuarioSemStatus(){
+        atualizarDadosAlunos(); 
+        ArrayList<String> alunos = new ArrayList<String>();
+        
+        if(alunos_sistema != null){
+           for(int i = 0; i < alunos_sistema.length; i++){
+                alunos.add(alunos_sistema[i].getId() + "/"+ alunos_sistema[i].getName());
+            }
+        }
+        
+        return alunos;
+    }
+    
+    public static String getNomeAlunoByID(String id){
+        atualizarDadosAlunos(); 
+        String nome_aluno = null;
+        
+        if(alunos_sistema != null){
+           for(int i = 0; i < alunos_sistema.length; i++){
+               if(alunos_sistema[i].getId().equalsIgnoreCase(id)){
+                   nome_aluno = alunos_sistema[i].getName();
+                   break;
+               }
+            }
+        }
+        
+        return nome_aluno;
+    }
+    
     // Calcula o número de aniversáriantes da lista
     public static int numAniversariantes(){
         atualizarDadosAlunos(); 
@@ -65,7 +95,7 @@ public class AlunoController {
         return aniversariantes;
     }
     
-    // Calcula o número de aniversáriantes da lista
+    // Calcula o número de alunos ativos
     public static int numAlunosAtivos(){
         atualizarDadosAlunos(); 
 

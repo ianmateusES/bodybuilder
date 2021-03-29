@@ -37,6 +37,20 @@ public class ExercicioController {
         return exercicio;
     }
     
+    public static String getNomeAlunoByID(String id){
+        atualizarDadosExercicios(); 
+        String nome_exercicio = null;
+        
+        if(exercicios_sistema != null){
+           for(int i = 0; i < exercicios_sistema.length; i++){
+               if(exercicios_sistema[i].getId().equalsIgnoreCase(id)){
+                   nome_exercicio = exercicios_sistema[i].getName();
+                   break;
+               }
+            }
+        }
+        return nome_exercicio;
+    }
     
      // Retorna o numero de exercicios que não sao dos sistema, sem precisar reacesso ao BD
     public static int numExerciciosUsuario(){

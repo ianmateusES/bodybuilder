@@ -1,6 +1,9 @@
-package model;
+package utils;
 
 public class ExercicioList {
+
+    public ExercicioList() {
+    }
 
     public String getId() {
         return _id;

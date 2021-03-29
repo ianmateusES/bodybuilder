@@ -34,6 +34,8 @@ public class RequestExercicioPersonal {
 
         String parametros = Util.converteStringEmJson(argumentos, valores);
 
+        System.out.println(parametros);
+        
         String json = new Json().pegarJsonDB(pastaReq, metodo, parametros);
         return (new Gson().fromJson(json, Exercicio.class) != null);
     }

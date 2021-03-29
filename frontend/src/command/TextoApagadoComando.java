@@ -10,9 +10,8 @@ package command;
  * @author vivi
  */
 public class TextoApagadoComando implements Comando{
-    String textoInput;
-    String novoTexto;
-
+    private String textoInput;
+    private String novoTexto;
     
     public TextoApagadoComando(String textoInput, String novoTexto){
         this.textoInput = textoInput;

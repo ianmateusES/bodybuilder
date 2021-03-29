@@ -16,15 +16,13 @@ import utils.Util;
  * @author vivi
  */
 public class Json {
-    static int codSuccess = 200; // Esse é o código mandado pelo backend caso a requisição tenha sido realizada com sucesso
+    private static int codSuccess = 200; // Esse é o código mandado pelo backend caso a requisição tenha sido realizada com sucesso
     
     // Recebe a pasta da requisição, o método e os paramêtros caso existam, se não existirem recebe null
     public String pegarJsonDB(String pastaReq, String metodo, String parametros){
         String json = ""; // Json que será retornada
          try {
             HttpURLConnection con = Connection.BuscarConexao(pastaReq, metodo); // Método da Classe Connection
-                            System.out.println(pastaReq + metodo + parametros);
-
             //Caso existam parametros a serem mandados eles são enviados pelo bloco abaixo
             if(parametros != null){
                 OutputStream out = con.getOutputStream();
@@ -34,7 +32,6 @@ public class Json {
                 out.close();
             }
             
-             System.out.println(con.getResponseCode());
             // Compara se o código de resposta foi bem sucedido, senão dá erro na tela
             if(con.getResponseCode() != this.codSuccess) throw new RuntimeException("HTTP error code: " + con.getResponseCode()); 
             

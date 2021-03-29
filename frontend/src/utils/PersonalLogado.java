@@ -60,4 +60,5 @@ public final class PersonalLogado extends UsuarioLogado{
     public String getToken() {
         return this.token;
     }
+
 }

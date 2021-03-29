@@ -13,7 +13,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import model.ExercicioList;
+import java.util.ArrayList;
+import utils.ExercicioList;
 import model.Exercicio;
 import model.TreinoAluno;
 import serverCommunication.Json;
@@ -26,52 +27,37 @@ import utils.Util;
  */
 public class ResquestTreinoAluno {
 
-    /*public static boolean cadastrarTreino(String aluno, ExercicioList[] exercicios, String objective) throws Exception {
-        String pastaReq = "/treino";
-        String metodo = "POST";
-        String [] argumentos = {"aluno","objective", "exercise_list"};
-        String [] valores = {exercicio.getAuthor(),exercicio.getName(), exercicio.getGroup()};
+    public static TreinoAluno[] listeTreinosAluno(String id_aluno){
+        String pastaReq = "/treino-aluno/"+id_aluno;
+        String metodo = "GET";
 
-        String parametros = Util.converteStringEmJson(argumentos, valores);
-        String json = new Json().pegarJsonDB(pastaReq, metodo, parametros);
-        TreinoAluno personal = new Gson().fromJson(json, TreinoAluno.class);
+        String json = new Json().pegarJsonDB(pastaReq, metodo, null);
         
+        TreinoAluno[] treinoAluno = new Gson().fromJson(json, TreinoAluno[].class);
+        System.out.println(json);
+
+        return treinoAluno;
     }
     
-     public static boolean deletarTreino(String aluno, ExercicioList[] exercicios, String objective) throws Exception {
-        String pastaReq = "/treino";
-        String metodo = "POST";
-        String [] argumentos = {"aluno","objective", "exercise_list"};
-        String [] valores = {exercicio.getAuthor(),exercicio.getName(), exercicio.getGroup()};
+    public static boolean deletarTreinoAluno(String id_aluno, String id_treino){
+        String pastaReq = "/treino-aluno/"+id_aluno+"/treino/"+id_treino;
+        String metodo = "DELETE";
 
-        String parametros = Util.converteStringEmJson(argumentos, valores);
-        String json = new Json().pegarJsonDB(pastaReq, metodo, parametros);
-        TreinoAluno personal = new Gson().fromJson(json, TreinoAluno.class);
+        String json = new Json().pegarJsonDB(pastaReq, metodo, null);
         
+        return new Gson().fromJson(json, boolean.class);
     }
-     
-      public static boolean listarTreino(String aluno, ExercicioList[] exercicios, String objective) throws Exception {
-        String pastaReq = "/treino";
+    
+    
+    public static boolean inserirTreino(String aluno, String objetivo, ArrayList<ExercicioList> exercicio){
+        String pastaReq = "/treinos";
         String metodo = "POST";
-        String [] argumentos = {"aluno","objective", "exercise_list"};
-        String [] valores = {exercicio.getAuthor(),exercicio.getName(), exercicio.getGroup()};
-
-        String parametros = Util.converteStringEmJson(argumentos, valores);
-        String json = new Json().pegarJsonDB(pastaReq, metodo, parametros);
-        TreinoAluno personal = new Gson().fromJson(json, TreinoAluno.class);
         
+        String parametros = Util.converteObjetoExercicioEmJson(aluno, objetivo,exercicio);
+        System.out.println(parametros);
+        String json = new Json().pegarJsonDB(pastaReq, metodo, parametros);
+        new Gson().fromJson(json, TreinoAluno[].class);
+        return false;
     }
-      
-      
-       public static boolean atualizarTreino(String aluno, ExercicioList[] exercicios, String objective) throws Exception {
-        String pastaReq = "/treino";
-        String metodo = "POST";
-        String [] argumentos = {"aluno","objective", "exercise_list"};
-        String [] valores = {exercicio.getAuthor(),exercicio.getName(), exercicio.getGroup()};
 
-        String parametros = Util.converteStringEmJson(argumentos, valores);
-        String json = new Json().pegarJsonDB(pastaReq, metodo, parametros);
-        TreinoAluno personal = new Gson().fromJson(json, TreinoAluno.class);
-        
-    }*/
 }

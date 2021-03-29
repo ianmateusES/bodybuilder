@@ -142,6 +142,7 @@ public class InserExercicio extends javax.swing.JFrame {
     private void btn_inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inserirActionPerformed
         if(ExercicioController.inserirExercicio(input_exercicio.getText(), input_grupo.getText())){
             JOptionPane.showMessageDialog(this,"CADASTRO BEM SUCEDIDO", "Mensagem do sistema", JOptionPane.PLAIN_MESSAGE);
+            this.dispose();
         }else{
             JOptionPane.showMessageDialog(this,"ERRO AO CADASTRAR", "Mensagem do sistema", JOptionPane.ERROR_MESSAGE);
         }

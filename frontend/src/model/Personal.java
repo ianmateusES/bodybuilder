@@ -5,28 +5,39 @@
 package model;
 
 public class Personal extends Usuario{
+
+   
     private String _id;
     private String name;
     private String email;
     private String password;
+    private String password_confirmation;
     private String birthday;
     private String telephone;
     private String cref;
     private String address;
     
-    public Personal(String _id, String name, String email, String password,String birthday, String telephone,String cref, String address) {
+    public Personal(String _id, String name, String email, String password, String password_confirmation, String birthday, String telephone,String cref, String address) {
         this._id = _id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.password_confirmation = password_confirmation;
         this.birthday = birthday;
-
         this.telephone = telephone;
         this.cref = cref;
         this.address = address;
     }
     
     public Personal(){}
+    
+    public String getPassword_confirmation() {
+        return password_confirmation;
+    }
+
+    public void setPassword_confirmation(String password_confirmation) {
+        this.password_confirmation = password_confirmation;
+    }
     
     public String getBirthday() {
         return birthday;

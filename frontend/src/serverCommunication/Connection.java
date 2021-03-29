@@ -12,7 +12,7 @@ import utils.PersonalLogado;
  * @author vivi
  */
 public class Connection {
-    static String baseUrl = "http://localhost:3334"; //local onde o MongoDB está rodando
+    private static String baseUrl = "http://localhost:3334"; //local onde o MongoDB está rodando
 
     //Essa classe tenta se conectar com o backend, ela recebe o método da rota do Json e a pasta que o método do backend se encontra
     public static HttpURLConnection BuscarConexao(String pastaReq, String metodo){
@@ -28,7 +28,6 @@ public class Connection {
             
             //Caso o personal esteja logado, isso significa que ele precisa de autorização enviando seu token pro backend
             if(PersonalLogado.getInstance().getToken() != null){
-                System.out.println("passando o token");
                 con.setRequestProperty("authorization", "Bearer " + PersonalLogado.getInstance().getToken());
             }
             

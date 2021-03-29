@@ -5,17 +5,41 @@
  */
 package view.Access;
 
+import command.Invocador;
+import control.AlunoController;
+import control.TreinoAlunoController;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import view.Insert.InsertTreinoAluno;
+
 /**
  *
  * @author vivi
  */
 public class AccessAlunoTreino extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AccessAlunoTreino
-     */
-    public AccessAlunoTreino() {
+    // Invocador do padrão command na pasta "command"
+    Invocador command = Invocador.getInstace();
+    private static AccessAlunoTreino tela_treino;
+    private String id_aluno;
+    
+    private AccessAlunoTreino(String id_aluno) {
         initComponents();
+        
+        this.id_aluno = id_aluno;
+        setAlunoNome();
+    }
+    
+    private AccessAlunoTreino() {
+        initComponents();
+        setAlunoNome();
+    }
+    
+    public static AccessAlunoTreino getInstance(String id_aluno){
+        if(tela_treino == null){
+            tela_treino = new AccessAlunoTreino(id_aluno);
+        }
+        return tela_treino;
     }
 
     /**
@@ -27,21 +51,273 @@ public class AccessAlunoTreino extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        txt_titulo_tela = new javax.swing.JLabel();
+        btn_atualizar_tabela = new java.awt.Button();
+        btn_pesquisar = new java.awt.Button();
+        input_pesquisar = new java.awt.TextField();
+        table_principal = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
+        btn_atualizar = new java.awt.Button();
+        btn_cadastrar = new java.awt.Button();
+        panel_main = new javax.swing.JPanel();
+        txt_aniversariantes = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        btn_excluir1 = new java.awt.Button();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(470, 400));
+        setMinimumSize(new java.awt.Dimension(470, 400));
+
+        jPanel1.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel1.setMaximumSize(new java.awt.Dimension(470, 400));
+        jPanel1.setMinimumSize(new java.awt.Dimension(470, 400));
+        jPanel1.setPreferredSize(new java.awt.Dimension(470, 400));
+
+        txt_titulo_tela.setFont(new java.awt.Font("Courier 10 Pitch", 0, 18)); // NOI18N
+        txt_titulo_tela.setForeground(new java.awt.Color(1, 1, 1));
+        txt_titulo_tela.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_titulo_tela.setText("Treinos do ");
+
+        btn_atualizar_tabela.setBackground(new java.awt.Color(68, 68, 68));
+        btn_atualizar_tabela.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_atualizar_tabela.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
+        btn_atualizar_tabela.setForeground(new java.awt.Color(254, 254, 254));
+        btn_atualizar_tabela.setLabel("Atualizar Tabela");
+        btn_atualizar_tabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_atualizar_tabelaActionPerformed(evt);
+            }
+        });
+
+        btn_pesquisar.setBackground(new java.awt.Color(68, 68, 68));
+        btn_pesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_pesquisar.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
+        btn_pesquisar.setForeground(new java.awt.Color(254, 254, 254));
+        btn_pesquisar.setLabel("Pesquisar");
+        btn_pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pesquisarActionPerformed(evt);
+            }
+        });
+
+        input_pesquisar.setBackground(new java.awt.Color(254, 254, 254));
+        input_pesquisar.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
+        input_pesquisar.setForeground(new java.awt.Color(1, 1, 1));
+        input_pesquisar.setText("Pesquise aqui...");
+        input_pesquisar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                input_pesquisarFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                input_pesquisarFocusLost(evt);
+            }
+        });
+
+        tabela.setBackground(new java.awt.Color(254, 254, 254));
+        tabela.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        tabela.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
+        tabela.setForeground(new java.awt.Color(1, 1, 1));
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "id_verdadeiro", "id", "objetivo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabela.setRowHeight(20);
+        tabela.setShowGrid(true);
+        tabela.setShowVerticalLines(false);
+        tabela.getColumnModel().getColumn(0).setMaxWidth(0);
+        tabela.getColumnModel().getColumn(0).setMinWidth(0);
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(0);
+        tabela.getColumnModel().getColumn(0).setResizable(false);
+        table_principal.setViewportView(tabela);
+
+        btn_atualizar.setActionCommand("-");
+        btn_atualizar.setBackground(new java.awt.Color(68, 68, 68));
+        btn_atualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_atualizar.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
+        btn_atualizar.setForeground(new java.awt.Color(254, 254, 254));
+        btn_atualizar.setLabel(">");
+        btn_atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_atualizarActionPerformed(evt);
+            }
+        });
+
+        btn_cadastrar.setBackground(new java.awt.Color(68, 68, 68));
+        btn_cadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_cadastrar.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
+        btn_cadastrar.setForeground(new java.awt.Color(254, 254, 254));
+        btn_cadastrar.setLabel("+");
+        btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastrarActionPerformed(evt);
+            }
+        });
+
+        panel_main.setBackground(new java.awt.Color(254, 254, 254));
+        panel_main.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        panel_main.setMaximumSize(new java.awt.Dimension(215, 80));
+        panel_main.setMinimumSize(new java.awt.Dimension(215, 80));
+
+        txt_aniversariantes.setBackground(new java.awt.Color(218, 214, 210));
+        txt_aniversariantes.setFont(new java.awt.Font("Courier 10 Pitch", 0, 12)); // NOI18N
+        txt_aniversariantes.setForeground(new java.awt.Color(1, 1, 1));
+        txt_aniversariantes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_aniversariantes.setText("x treinos");
+        txt_aniversariantes.setName("txt_navegacao"); // NOI18N
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/img_lista.png"))); // NOI18N
+
+        javax.swing.GroupLayout panel_mainLayout = new javax.swing.GroupLayout(panel_main);
+        panel_main.setLayout(panel_mainLayout);
+        panel_mainLayout.setHorizontalGroup(
+            panel_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txt_aniversariantes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panel_mainLayout.setVerticalGroup(
+            panel_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_mainLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txt_aniversariantes)
+                .addGap(8, 8, 8))
+        );
+
+        btn_excluir1.setActionCommand("-");
+        btn_excluir1.setBackground(new java.awt.Color(68, 68, 68));
+        btn_excluir1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_excluir1.setFont(new java.awt.Font("Courier 10 Pitch", 0, 14)); // NOI18N
+        btn_excluir1.setForeground(new java.awt.Color(254, 254, 254));
+        btn_excluir1.setLabel("-");
+        btn_excluir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_excluir1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txt_titulo_tela, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(table_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panel_main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(input_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_atualizar_tabela, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_excluir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(txt_titulo_tela)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(panel_main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(input_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_cadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_atualizar_tabela, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_excluir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(table_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
+        pesquisarUsuario(input_pesquisar.getText());
+    }//GEN-LAST:event_btn_pesquisarActionPerformed
+
+    private void input_pesquisarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_input_pesquisarFocusGained
+        input_pesquisar.setText(command.executaComando(Invocador.Apagado, "Pesquise aqui...", input_pesquisar.getText()));
+    }//GEN-LAST:event_input_pesquisarFocusGained
+
+    private void input_pesquisarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_input_pesquisarFocusLost
+        input_pesquisar.setText(command.desfaz(input_pesquisar.getText()));
+    }//GEN-LAST:event_input_pesquisarFocusLost
+
+    private void btn_atualizar_tabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atualizar_tabelaActionPerformed
+        atualizarTabela();
+    }//GEN-LAST:event_btn_atualizar_tabelaActionPerformed
+
+    private void btn_atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_atualizarActionPerformed
+        int linha = tabela.getSelectedRow();
+        if(linha >= 0) {
+            String id_treino = tabela.getValueAt(linha, 0).toString();
+            InsertTreinoAluno.getInstance(id_aluno, id_treino).setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this,"SELECIONE UM TREINO", "Mensagem do sistema", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_atualizarActionPerformed
+
+    private void btn_excluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excluir1ActionPerformed
+        int linha = tabela.getSelectedRow();
+        if(linha >= 0) {
+            String id_treino = tabela.getValueAt(linha, 0).toString();
+            //EXCLUIR BY ID
+        }else{
+            JOptionPane.showMessageDialog(this,"SELECIONE UM TREINO", "Mensagem do sistema", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_excluir1ActionPerformed
+
+    private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
+        InsertTreinoAluno.getInstance(id_aluno, null).setVisible(true);
+    }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +355,70 @@ public class AccessAlunoTreino extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button btn_atualizar;
+    private java.awt.Button btn_atualizar_tabela;
+    private java.awt.Button btn_cadastrar;
+    private java.awt.Button btn_excluir1;
+    private java.awt.Button btn_pesquisar;
+    private java.awt.TextField input_pesquisar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panel_main;
+    private javax.swing.JTable tabela;
+    private javax.swing.JScrollPane table_principal;
+    private javax.swing.JLabel txt_aniversariantes;
+    private javax.swing.JLabel txt_titulo_tela;
     // End of variables declaration//GEN-END:variables
+      // Procura os alunos dentro da lista
+    private void pesquisarUsuario(String pesquisa){
+        DefaultTableModel model_info = (DefaultTableModel)tabela.getModel();
+        String linha_conteudo = "";
+        for(int i = 0; i < model_info.getRowCount(); i++){
+            for(int j = 1; j < model_info.getColumnCount(); j++){
+                linha_conteudo +=  model_info.getValueAt(i, j);
+            }
+            
+            if(!linha_conteudo.contains(pesquisa)){
+                model_info.removeRow(i);
+                i--;
+            }
+            
+            linha_conteudo = "";
+        }
+    }
+    
+    private void atualizarTabela(){
+        // Constroi um parâmetro de tabela que começa com 0 linha, 0 coluna
+        DefaultTableModel tbm = (DefaultTableModel) tabela.getModel();
+
+        //Enquanto a linha for maior que 0, ela será excluida
+        while (tbm.getRowCount() > 0) {
+            tbm.removeRow(0);
+        }
+        ArrayList<String> dados = TreinoAlunoController.listaTreinoAluno(id_aluno);
+        System.out.println("tentando");
+        //Repetido que se repetirá até Estoque a for todo repetido
+        if (dados != null) {
+            for (int i = 0; i < dados.size(); i++) {
+                //Adiciona a linha de acordo com o contador
+                tbm.addRow(new String[i]);
+                String[] campo_separado = dados.get(i).split("/");
+
+                for(int j = 0; j <= campo_separado.length; j++){
+                    if(j == 1){
+                        tabela.setValueAt((i+1), i, j);
+                    }else if(j >= 2){
+                        tabela.setValueAt(campo_separado[j-1], i, j);
+                    }else{
+                        tabela.setValueAt(campo_separado[j], i, j);
+                    }
+                }
+            }
+        }
+    }
+    
+    private void setAlunoNome(){
+        String nome_aluno = AlunoController.getNomeAlunoByID(id_aluno);
+        txt_titulo_tela.setText("Treinos de "+nome_aluno);
+    }
 }
