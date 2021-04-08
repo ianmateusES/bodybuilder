@@ -113,7 +113,7 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel30.setText("Peitoral");
 
-        jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField5.setSelectionStart(4);
         jFormattedTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -125,53 +125,53 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel31.setText("Cintura");
 
-        jFormattedTextField6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField6.setSelectionStart(4);
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel32.setText("Abdomen");
 
-        jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField7.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField7.setSelectionStart(4);
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel33.setText("Quadril");
 
-        jFormattedTextField8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField8.setSelectionStart(4);
 
         jLabel34.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel34.setText("Coxas");
 
-        jFormattedTextField9.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField9.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField9.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField9.setSelectionStart(4);
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel35.setText("Panturrilha");
 
-        jFormattedTextField10.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField10.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField10.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField10.setSelectionStart(4);
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel36.setText("Ombro");
 
-        jFormattedTextField11.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField11.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField11.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField11.setSelectionStart(4);
 
-        jFormattedTextField12.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField12.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField12.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField12.setSelectionStart(4);
 
         jLabel37.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel37.setText("Braço R");
 
-        jFormattedTextField13.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField13.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField13.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField13.setSelectionStart(4);
 
@@ -181,7 +181,7 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
         jLabel48.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel48.setText("Antebraço");
 
-        jFormattedTextField23.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField23.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField23.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField23.setSelectionStart(4);
 
@@ -344,14 +344,14 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Diametro Osse");
 
-        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField3.setSelectionStart(4);
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel28.setText("Femur");
 
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField4.setSelectionStart(4);
 
@@ -393,11 +393,11 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel26.setText("Altura");
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField1.setSelectionStart(4);
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField2.setSelectionStart(4);
 
@@ -413,39 +413,39 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
         jLabel39.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel39.setText("Biceps");
 
-        jFormattedTextField14.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField14.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField14.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField14.setSelectionStart(4);
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel40.setText("Auxiliar Medio");
 
-        jFormattedTextField15.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField15.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField15.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField15.setSelectionStart(4);
 
         jLabel42.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel42.setText("Triceps");
 
-        jFormattedTextField17.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField17.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField17.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField17.setSelectionStart(4);
 
         jLabel43.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel43.setText("Supra Iliaca");
 
-        jFormattedTextField18.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField18.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField18.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField18.setSelectionStart(4);
 
         jLabel45.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel45.setText("Abdominal");
 
-        jFormattedTextField20.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField20.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField20.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField20.setSelectionStart(4);
 
-        jFormattedTextField21.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField21.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField21.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField21.setSelectionStart(4);
 
@@ -455,18 +455,18 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
         jLabel47.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel47.setText("Subespular");
 
-        jFormattedTextField22.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField22.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField22.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField22.setSelectionStart(4);
 
         jLabel49.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel49.setText("Coxa");
 
-        jFormattedTextField24.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField24.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField24.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField24.setSelectionStart(4);
 
-        jFormattedTextField26.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField26.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jFormattedTextField26.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jFormattedTextField26.setSelectionStart(4);
 
@@ -650,47 +650,49 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            avaliacao.setAltura(Float.parseFloat(jFormattedTextField1.getText().replace(",", ".")));
+            avaliacao.setPeso(Float.parseFloat(jFormattedTextField2.getText().replace(",", ".")));
 
-        avaliacao.setAltura(Float.parseFloat(jFormattedTextField1.getText()));
-        avaliacao.setPeso(Float.parseFloat(jFormattedTextField2.getText()));
-        
-        avaliacao.setFemur(Float.parseFloat(jFormattedTextField3.getText()));
-        avaliacao.setPunho(Float.parseFloat(jFormattedTextField4.getText()));
-        
-        avaliacao.setPeitoral(Float.parseFloat(jFormattedTextField5.getText()));
-        avaliacao.setCintura(Float.parseFloat(jFormattedTextField6.getText()));
-        avaliacao.setAbdomen(Float.parseFloat(jFormattedTextField7.getText()));
-        
-        avaliacao.setQuadril(Float.parseFloat(jFormattedTextField8.getText()));
-        avaliacao.setCoxas(Float.parseFloat(jFormattedTextField9.getText()));
-        avaliacao.setPanturrilha(Float.parseFloat(jFormattedTextField10.getText()));
-        avaliacao.setOmbro(Float.parseFloat(jFormattedTextField12.getText()));
-        avaliacao.setBraco_contraido(Float.parseFloat(jFormattedTextField11.getText()));
-        
-        avaliacao.setBraco_relaxado(Float.parseFloat(jFormattedTextField13.getText()));
-        avaliacao.setAntebraco(Float.parseFloat(jFormattedTextField23.getText()));
-        avaliacao.setBiceps(Float.parseFloat(jFormattedTextField14.getText()));
-        avaliacao.setAuxiliarMedio(Float.parseFloat(jFormattedTextField15.getText()));
-        
-        avaliacao.setTriceps(Float.parseFloat(jFormattedTextField17.getText()));
-        avaliacao.setSupraIliaca(Float.parseFloat(jFormattedTextField18.getText()));
-        avaliacao.setAbdominal(Float.parseFloat(jFormattedTextField21.getText()));
-        avaliacao.setPanturrilhaMedial(Float.parseFloat(jFormattedTextField20.getText()));
-        
-        avaliacao.setSubespular(Float.parseFloat(jFormattedTextField22.getText()));
-        avaliacao.setCoxa(Float.parseFloat(jFormattedTextField24.getText()));
-        avaliacao.setTorax(Float.parseFloat(jFormattedTextField26.getText()));
-        
-        String mensagem = controleAluno.cadastrarAvaliacao();
-        
-        if(mensagem.equalsIgnoreCase("sucesso")){
-            JOptionPane.showMessageDialog(this, "Cadastro realiazado com sucesso\n", "Mensagem do Sistema", JOptionPane.INFORMATION_MESSAGE);
-            new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
-            this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(this, mensagem, "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
+            avaliacao.setFemur(Float.parseFloat(jFormattedTextField3.getText().replace(",", ".")));
+            avaliacao.setPunho(Float.parseFloat(jFormattedTextField4.getText().replace(",", ".")));
+
+            avaliacao.setPeitoral(Float.parseFloat(jFormattedTextField5.getText().replace(",", ".")));
+            avaliacao.setCintura(Float.parseFloat(jFormattedTextField6.getText().replace(",", ".")));
+            avaliacao.setAbdomen(Float.parseFloat(jFormattedTextField7.getText().replace(",", ".")));
+
+            avaliacao.setQuadril(Float.parseFloat(jFormattedTextField8.getText().replace(",", ".")));
+            avaliacao.setCoxas(Float.parseFloat(jFormattedTextField9.getText().replace(",", ".")));
+            avaliacao.setPanturrilha(Float.parseFloat(jFormattedTextField10.getText().replace(",", ".")));
+            avaliacao.setOmbro(Float.parseFloat(jFormattedTextField12.getText().replace(",", ".")));
+            avaliacao.setBraco_contraido(Float.parseFloat(jFormattedTextField11.getText().replace(",", ".")));
+
+            avaliacao.setBraco_relaxado(Float.parseFloat(jFormattedTextField13.getText().replace(",", ".")));
+            avaliacao.setAntebraco(Float.parseFloat(jFormattedTextField23.getText().replace(",", ".")));
+            avaliacao.setBiceps(Float.parseFloat(jFormattedTextField14.getText().replace(",", ".")));
+            avaliacao.setAuxiliarMedio(Float.parseFloat(jFormattedTextField15.getText().replace(",", ".")));
+
+            avaliacao.setTriceps(Float.parseFloat(jFormattedTextField17.getText().replace(",", ".")));
+            avaliacao.setSupraIliaca(Float.parseFloat(jFormattedTextField18.getText().replace(",", ".")));
+            avaliacao.setAbdominal(Float.parseFloat(jFormattedTextField21.getText().replace(",", ".")));
+            avaliacao.setPanturrilhaMedial(Float.parseFloat(jFormattedTextField20.getText().replace(",", ".")));
+
+            avaliacao.setSubespular(Float.parseFloat(jFormattedTextField22.getText().replace(",", ".")));
+            avaliacao.setCoxa(Float.parseFloat(jFormattedTextField24.getText().replace(",", ".")));
+            avaliacao.setTorax(Float.parseFloat(jFormattedTextField26.getText().replace(",", ".")));
+
+            String mensagem = controleAluno.cadastrarAvaliacao();
+
+            if(mensagem.equalsIgnoreCase("sucesso")){
+                JOptionPane.showMessageDialog(this, "Cadastro realiazado com sucesso\n", "Mensagem do Sistema", JOptionPane.INFORMATION_MESSAGE);
+                new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, mensagem, "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Campo vazio", "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
