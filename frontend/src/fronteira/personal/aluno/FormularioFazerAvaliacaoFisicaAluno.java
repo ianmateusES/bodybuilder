@@ -19,17 +19,17 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
     /**
      * Creates new form MenuFazerAvaliacaoFisicaPersonal
      */
-    IAluno aluno;
-    AvaliacaoFisicaAluno avaliacao;
+    private IAluno aluno;
+    private AvaliacaoFisicaAluno avaliacao;
+    private PersonalAlunoAvaliacaoFisicaControle controleAluno;
     
     public FormularioFazerAvaliacaoFisicaAluno(IAluno aluno) {
         this.aluno = aluno;
         avaliacao = new AvaliacaoFisicaAluno();
+        controleAluno = new PersonalAlunoAvaliacaoFisicaControle(aluno, avaliacao);
         initComponents();
         jLabel11.setText(aluno.getNome());
     }
-    
-    public FormularioFazerAvaliacaoFisicaAluno(){initComponents();}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,6 +65,7 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
         jFormattedTextField23 = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -298,15 +299,26 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(47, 106, 135));
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton2.setText("<");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(47, 106, 135));
@@ -638,8 +650,7 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
+
         avaliacao.setAltura(Float.parseFloat(jFormattedTextField1.getText()));
         avaliacao.setPeso(Float.parseFloat(jFormattedTextField2.getText()));
         
@@ -670,22 +681,26 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
         avaliacao.setCoxa(Float.parseFloat(jFormattedTextField24.getText()));
         avaliacao.setTorax(Float.parseFloat(jFormattedTextField26.getText()));
         
-        PersonalAlunoAvaliacaoFisicaControle controleAluno = new PersonalAlunoAvaliacaoFisicaControle(aluno, avaliacao);
         String mensagem = controleAluno.cadastrarAvaliacao();
         
         if(mensagem.equalsIgnoreCase("sucesso")){
             JOptionPane.showMessageDialog(this, "Cadastro realiazado com sucesso\n", "Mensagem do Sistema", JOptionPane.INFORMATION_MESSAGE);
+            new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(this, mensagem, "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
-            this.dispose();
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jFormattedTextField5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -693,6 +708,7 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField10;
     private javax.swing.JFormattedTextField jFormattedTextField11;

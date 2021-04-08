@@ -15,8 +15,6 @@ import javax.swing.JOptionPane;
 
 public class MenuPersonal extends javax.swing.JFrame{
     
-    public MenuPersonal() {}
-    
     IPersonal personal;
     
     public MenuPersonal(IPersonal personal) {
@@ -222,7 +220,7 @@ public class MenuPersonal extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new FormularioCadastrarAluno().setVisible(true);
+        new FormularioCadastrarAluno(personal).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -247,7 +245,7 @@ public class MenuPersonal extends javax.swing.JFrame{
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        //new VisualizarAlunos(personal).setVisible(true);
+        new VisualizarAlunos(personal).setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -8,7 +8,9 @@ package dao.mysql.personal;
 import java.sql.*;
 import dao.ConexaoSqlDAO;
 import entidade.AlunoPadrao;
+import entidade.Anamnese;
 import interfaces.entidades.IAluno;
+import interfaces.entidades.IPersonal;
 import java.util.ArrayList;
 
 /**
@@ -18,8 +20,10 @@ import java.util.ArrayList;
 public class PersonalAlunoDAO{
     ConexaoSqlDAO con;
     IAluno aluno;
+    IPersonal personal;
     
-    public PersonalAlunoDAO(IAluno aluno){
+    public PersonalAlunoDAO(IPersonal personal, IAluno aluno){
+        this.personal = personal;
         this.aluno = aluno;
         this.con = new ConexaoSqlDAO(); 
     }
@@ -32,39 +36,70 @@ public class PersonalAlunoDAO{
         ResultSet rs = null;
 
         try {
-            String sql = "INSERT INTO TB_Endereco VALUES(0,'vazio', 'vazio', 'vazio', 'vazio', 'vazio', 'vazio', 'vazio') ";
-
+            String sql = "select COUNT(*) from usuario u join personal p on (u.id_usuario = p.id_usuario) where u.email = ?;";
+            
             conector = con.AbrirConexao();
+
             pst = conector.prepareStatement(sql);
+            pst.setString(1, aluno.getEmail());
+            rs = pst.executeQuery();
+            rs.next();
+
+            if(rs.getInt("count") > 0) {
+                return false;
+            }
+            
+            sql = "insert into endereco(rua, numero, cep, bairro, cidade, estado, complemento) values ('', '', '', '', '', '', '');";
+
+            pst = conector.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             if(!(pst.executeUpdate() > 0)) return false;
             
-            sql = "INSERT INTO TB_Usuario(id_endereco, nome, dataNascimento, telefone, celular, email, senha) VALUES (LAST_INSERT_ID(),?, ?, '', '', ?, '');";
+            rs = pst.getGeneratedKeys();
+            rs.next();
+            int id_endereco = rs.getInt(1);
             
-            pst = conector.prepareStatement(sql);
-            pst.setString(1, aluno.getNome());
-            pst.setString(2, aluno.getDataNascimento());
-            pst.setString(3, aluno.getEmail());
+            sql = "insert into usuario(id_endereco, email, senha, nome, datanascimento, celular) values (?, ?, '12345', ?, ?, ?);";
             
-            System.out.println(aluno.getNome());
+            pst = conector.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            pst.setInt(1, id_endereco);
+            pst.setString(2, aluno.getEmail());
+            pst.setString(3, aluno.getNome());
+            pst.setString(4, aluno.getDataNascimento());
+            pst.setString(5, aluno.getCelular());
             
-             if(!(pst.executeUpdate() > 0)) return false;
-            System.out.println("oi");
+            if(!(pst.executeUpdate() > 0)) return false;
+            
+            rs = pst.getGeneratedKeys();
+            rs.next();
+            int id_usuario = rs.getInt(1);
 
-            sql = "INSERT INTO TB_Aluno(id_usuario) VALUES (LAST_INSERT_ID());";
-            pst = conector.prepareStatement(sql);
+            sql = "insert into aluno(id_usuario) values (?);";
+            pst = conector.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            pst.setInt(1, id_usuario);
            
             if(!(pst.executeUpdate() > 0)) return false;
             
-            sql = "INSERT INTO TB_Anamnese(id_aluno, genero, alergias, cirurgias, medicamentos, vicios, observacoes) VALUES(LAST_INSERT_ID(), ?, ?, ?, ?, ?, ?)";
+            rs = pst.getGeneratedKeys();
+            rs.next();
+            int id_aluno = rs.getInt(1);
+            
+            sql = "insert into anamnese(id_aluno, genero, alergias, cirurgias, vicios, medicamentos, observacoes) values (?, ?, ?, ?, ?, ?, ?);";
             pst = conector.prepareStatement(sql);
-
-            pst.setString(1, aluno.getAnamnese().getGenero());
-            pst.setString(2, aluno.getAnamnese().getAlergias());
-            pst.setString(3, aluno.getAnamnese().getCirurgias());
-            pst.setString(4, aluno.getAnamnese().getMedicamentos());
+            pst.setInt(1, id_aluno);
+            pst.setString(2, aluno.getAnamnese().getGenero());
+            pst.setString(3, aluno.getAnamnese().getAlergias());
+            pst.setString(4, aluno.getAnamnese().getCirurgias());
             pst.setString(5, aluno.getAnamnese().getVicios());
-            pst.setString(6, aluno.getAnamnese().getObservacoes());
+            pst.setString(6, aluno.getAnamnese().getMedicamentos());
+            pst.setString(7, aluno.getAnamnese().getObservacoes());
+            
+            if(!(pst.executeUpdate() > 0)) return false;
+            
+            sql = "insert into personal_aluno(id_personal, id_aluno) values (?, ?);";
+            pst = conector.prepareStatement(sql);
+            pst.setInt(1, personal.getId_personal());
+            pst.setInt(2, id_aluno);
             
             if(!(pst.executeUpdate() > 0)) return false;
 
@@ -84,23 +119,36 @@ public class PersonalAlunoDAO{
         ResultSet rs = null;
         
         ArrayList<IAluno> alunos = new ArrayList<IAluno>();
-        String sql = "SELECT * FROM TB_Usuario INNER JOIN TB_Aluno ON TB_Usuario.id_usuario = TB_Aluno.id_usuario INNER JOIN TB_Endereco ON TB_Usuario.id_endereco = TB_Endereco.id_endereco";
+        String sql = "select u.id_usuario, u.nome, u.email, u.dataNascimento,  a2.*  from personal_aluno pa join aluno a on (pa.id_aluno = a.id_aluno) join usuario u on (a.id_usuario = u.id_usuario) join anamnese a2 on (a.id_aluno = a2.id_aluno) where pa.id_personal = ? order by a.id_aluno;";
         try {
             conector = con.AbrirConexao();
             pst = conector.prepareStatement(sql);
+            pst.setInt(1, personal.getId_personal());
             rs = pst.executeQuery();
             
+            AlunoPadrao newAluno;
+            Anamnese anmnese;
             while(rs.next()) {
-                AlunoPadrao aluno = new AlunoPadrao();
+                newAluno = new AlunoPadrao();
+                anmnese = new Anamnese();
                 
-                aluno.setId_usuario(rs.getInt("id_usuario"));
-                aluno.setNome(rs.getString("nome"));
-
-                aluno.setDataNascimento(rs.getString("dataNascimento"));
-                aluno.setEmail(rs.getString("email"));
-                aluno.setId_aluno(rs.getInt("id_aluno"));
+                anmnese.setId_anamnese(rs.getInt("id_anamnese"));
+                anmnese.setGenero(rs.getString("genero"));
+                anmnese.setAlergias(rs.getString("alergias"));
+                anmnese.setCirurgias(rs.getString("cirurgias"));
+                anmnese.setVicios(rs.getString("vicios"));
+                anmnese.setMedicamentos(rs.getString("medicamentos"));
+                anmnese.setObservacoes(rs.getString("observacoes"));
                 
-                alunos.add(aluno);
+                newAluno.setId_usuario(rs.getInt("id_usuario"));
+                newAluno.setNome(rs.getString("nome"));
+                newAluno.setDataNascimento(rs.getString("dataNascimento"));
+                newAluno.setEmail(rs.getString("email"));
+                newAluno.setId_aluno(rs.getInt("id_aluno"));
+                
+                newAluno.setAnamnese(anmnese);
+                
+                alunos.add(newAluno);
             }
 
             pst.close();
@@ -111,5 +159,38 @@ public class PersonalAlunoDAO{
         }
 
         return alunos;
+    }
+    
+    public boolean atualizarAnamnese() {
+        boolean retorno = false;
+        
+        java.sql.Connection conector = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+ 
+        String sql = "update anamnese "
+                + "set genero = ?, alergias = ?, cirurgias = ?, vicios = ?, medicamentos = ?, observacoes = ? "
+                + "where id_anamnese = ?;";
+        try {
+            conector = con.AbrirConexao();
+            pst = conector.prepareStatement(sql);
+            pst.setString(1, aluno.getAnamnese().getGenero());
+            pst.setString(2, aluno.getAnamnese().getAlergias());
+            pst.setString(3, aluno.getAnamnese().getCirurgias());
+            pst.setString(4, aluno.getAnamnese().getVicios());
+            pst.setString(5, aluno.getAnamnese().getMedicamentos());
+            pst.setString(6, aluno.getAnamnese().getObservacoes());
+            pst.setInt(7, aluno.getAnamnese().getId_anamnese());
+            
+            retorno = !pst.execute();
+            
+            pst.close();
+            rs.close();
+            con.FecharConexao(conector);
+        } catch(Exception e) {
+            System.err.println("" + e.getMessage());
+        }
+        
+        return retorno;
     }
 }

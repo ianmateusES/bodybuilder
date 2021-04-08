@@ -5,16 +5,39 @@
  */
 package fronteira.personal.aluno;
 
+import controle.personal.PersonalAlunoControle;
+import entidade.Anamnese;
+import interfaces.entidades.IAluno;
+import javax.swing.JOptionPane;
+
 /**
  *
  */
 public class FormularioModificarVisualizarAnamnese extends javax.swing.JFrame {
+    
+    private IAluno aluno;
+    private PersonalAlunoControle personalAlunoControler;
 
     /**
      * Creates new form FormularioModificarAnamnese
      */
-    public FormularioModificarVisualizarAnamnese() {
+    public FormularioModificarVisualizarAnamnese(IAluno aluno) {
+        personalAlunoControler = new PersonalAlunoControle(null, aluno);
+        this.aluno = aluno;
         initComponents();
+        
+        if(this.aluno != null) {
+            preencherCampos();
+        }
+    }
+    
+    private void preencherCampos() {
+        jTextField4.setSelectedItem(aluno.getAnamnese().getGenero());
+        jTextField5.setText(aluno.getAnamnese().getAlergias());
+        jTextField6.setText(aluno.getAnamnese().getCirurgias());
+        jTextField7.setText(aluno.getAnamnese().getMedicamentos());
+        jTextField8.setText(aluno.getAnamnese().getVicios());
+        jTextField9.setText(aluno.getAnamnese().getObservacoes()); 
     }
 
     /**
@@ -30,6 +53,7 @@ public class FormularioModificarVisualizarAnamnese extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -68,15 +92,26 @@ public class FormularioModificarVisualizarAnamnese extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(47, 106, 135));
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton2.setText("<");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
         jPanel2.setBackground(new java.awt.Color(110, 178, 204));
@@ -223,11 +258,35 @@ public class FormularioModificarVisualizarAnamnese extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        Anamnese anamnese = new Anamnese();
+        anamnese = aluno.getAnamnese();
+        anamnese.setGenero(jTextField4.getSelectedItem().toString());
+        anamnese.setAlergias(jTextField5.getText());
+        anamnese.setCirurgias(jTextField6.getText());
+        anamnese.setMedicamentos(jTextField7.getText());
+        anamnese.setVicios(jTextField8.getText());
+        anamnese.setObservacoes(jTextField9.getText());
+        
+        
+        
+        String mensagem = personalAlunoControler.atulizarAnamnese();
+        if(mensagem.equalsIgnoreCase("sucesso")){
+            JOptionPane.showMessageDialog(this, "Anamnese alterada com sucesso!\n", "Mensagem do Sistema", JOptionPane.INFORMATION_MESSAGE);
+            new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, mensagem, "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
