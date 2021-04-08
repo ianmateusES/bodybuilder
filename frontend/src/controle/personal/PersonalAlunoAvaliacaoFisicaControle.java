@@ -33,12 +33,12 @@ public class PersonalAlunoAvaliacaoFisicaControle {
         return mensagem;
     }
     
-    public AvaliacaoFisicaAluno visualizarAvaliacao(){
-        avaliacao = personal_dao.visualizarAvaliacao();
-        if(avaliacao == null){
-            System.err.println("Erro ao visualizar, Banco de Dados\n");
+    public String visualizarAvaliacao(){
+        String mensagem = "sucesso";
+        if(!personal_dao.visualizarAvaliacao() || avaliacao.getId_avaliacao() != 0.0){
+            mensagem = "Aluno sem avaliação cadastrada";
         }
-        return avaliacao;
+        return mensagem;
     }
   
 }

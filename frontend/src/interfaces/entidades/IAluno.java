@@ -27,4 +27,7 @@ public interface IAluno{
 
     public abstract void setEmail(String email);
     public abstract String getEmail();
+    
+    public abstract void setCelular(String celular);
+    public abstract String getCelular();
 }

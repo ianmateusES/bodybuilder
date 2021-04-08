@@ -58,10 +58,10 @@ public class PersonalDAO{
         java.sql.Connection conector = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
-        
-        String sql = "select COUNT(*) from usuario u join personal p on (u.id_usuario = p.id_usuario) where u.email = ?;";
 
         try {
+            String sql = "select COUNT(*) from usuario u join personal p on (u.id_usuario = p.id_usuario) where u.email = ?;";
+            
             conector = con.AbrirConexao();
 
             pst = conector.prepareStatement(sql);
@@ -127,12 +127,12 @@ public class PersonalDAO{
         return retorno;
     }
     public IPersonal visualizarConta() {
-         try {
+        java.sql.Connection conector = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+            
+        try {
             String sql = "select * from usuario u join personal p on (u.id_usuario = p.id_usuario) join endereco e on (u.id_endereco = e.id_endereco) where u.email = ?;";
-
-            java.sql.Connection conector = null;
-            PreparedStatement pst = null;
-            ResultSet rs = null;
             
             conector = con.AbrirConexao();
             pst = conector.prepareStatement(sql);
@@ -153,6 +153,7 @@ public class PersonalDAO{
             
             Endereco endereco_personal = new Endereco();
             
+            endereco_personal.setId_endereco(rs.getInt("id_endereco"));
             endereco_personal.setNumero(rs.getString("numero"));
             endereco_personal.setComplemento(rs.getString("complemento"));
             endereco_personal.setRua(rs.getString("rua"));
@@ -172,16 +173,16 @@ public class PersonalDAO{
         
         return personal;
     }
-    public boolean alterarConta() {
-         String sql = "update usuario "
-                 + "set nome = ?, dataNascimento = ?, telefone = ?, celular = ?, email = ?, senha = ? "
-                 + "WHERE id_usuario = ?";
-         
+    public boolean alterarConta() {         
         java.sql.Connection conector = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
         
         boolean retorno = false;
+        
+        String sql = "update usuario "
+                 + "set nome = ?, dataNascimento = ?, telefone = ?, celular = ?, email = ?, senha = ? "
+                 + "WHERE id_usuario = ?;";
         
         try {
             conector = con.AbrirConexao();
@@ -195,13 +196,13 @@ public class PersonalDAO{
             pst.setString(6, personal.getSenha());
             pst.setInt(7, personal.getId_usuario());
             
-            if(!pst.execute()){
+            if(pst.execute()){
                 return false;
             }
             
             sql = "update endereco "
                 + "set estado = ?, cidade = ?, cep = ?, bairro = ?, rua = ?, numero = ?, complemento = ? "
-                + "where id_endereco = ?";
+                + "where id_endereco = ?;";
             
             pst = conector.prepareStatement(sql);
             
@@ -214,7 +215,7 @@ public class PersonalDAO{
             pst.setString(7, personal.getEndereco().getComplemento());
             pst.setInt(8, personal.getEndereco().getId_endereco());
             
-            retorno = pst.execute();
+            retorno = !pst.execute();
             pst.close();
             con.FecharConexao(conector);
         }catch(Exception e) {

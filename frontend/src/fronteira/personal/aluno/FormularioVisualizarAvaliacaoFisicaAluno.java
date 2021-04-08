@@ -26,22 +26,16 @@ public class FormularioVisualizarAvaliacaoFisicaAluno extends javax.swing.JFrame
     
     public FormularioVisualizarAvaliacaoFisicaAluno(IAluno aluno) {
         this.aluno = aluno;
-        Iniciar();
-        System.out.println(aluno.getNome());
+        avaliacao = new AvaliacaoFisicaAluno();
         controleAluno = new PersonalAlunoAvaliacaoFisicaControle(this.aluno, avaliacao);
-
-        if(this.aluno != null){
+        String mensage = controleAluno.visualizarAvaliacao();
+        initComponents();
+        
+        if(mensage.equals("sucesso")){
+            jLabel11.setText("Avaliação: " + aluno.getNome());
             preencherCampos();
-        }
-    }
-    
-    private void Iniciar(){
-        if(aluno != null){
-            initComponents();
-            jLabel11.setText("Fazer Avaliação: "+aluno.getNome());
         }else{
-            JOptionPane.showMessageDialog(this, "Erro ao passar o aluno\n", "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
-            dispose();
+            JOptionPane.showMessageDialog(this, mensage, "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -80,6 +74,7 @@ public class FormularioVisualizarAvaliacaoFisicaAluno extends javax.swing.JFrame
         jLabel48 = new javax.swing.JLabel();
         jFormattedTextField23 = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -315,15 +310,26 @@ public class FormularioVisualizarAvaliacaoFisicaAluno extends javax.swing.JFrame
 
         jPanel3.setBackground(new java.awt.Color(47, 106, 135));
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton2.setText("<");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(47, 106, 135));
@@ -674,8 +680,6 @@ public class FormularioVisualizarAvaliacaoFisicaAluno extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
     
     private void preencherCampos(){
-        avaliacao = controleAluno.visualizarAvaliacao();
-
         jFormattedTextField1.setText(avaliacao.getAltura()+"");
         jFormattedTextField2.setText(avaliacao.getPeso()+"");
         jFormattedTextField3.setText(avaliacao.getFemur()+"");
@@ -699,15 +703,22 @@ public class FormularioVisualizarAvaliacaoFisicaAluno extends javax.swing.JFrame
         jFormattedTextField22.setText(avaliacao.getSubespular()+"");
         jFormattedTextField24.setText(avaliacao.getCoxa()+"");
         jFormattedTextField26.setText(avaliacao.getTorax()+"");
+        jFormattedTextField16.setText(avaliacao.getData().split(" ")[0]+"");
     }
     
     private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jFormattedTextField5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField10;
     private javax.swing.JFormattedTextField jFormattedTextField11;

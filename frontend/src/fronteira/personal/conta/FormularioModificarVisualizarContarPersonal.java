@@ -45,7 +45,7 @@ public class FormularioModificarVisualizarContarPersonal extends javax.swing.JFr
     }
     
     private void preencherCampos(){
-        jTextField1.setText(personal_logado.getNome());;
+        jTextField1.setText(personal_logado.getNome());
         jTextField3.setText(personal_logado.getDataNascimento());
         jTextField2.setText(personal_logado.getTelefone());
         jTextField6.setText(personal_logado.getCelular());
@@ -86,6 +86,7 @@ public class FormularioModificarVisualizarContarPersonal extends javax.swing.JFr
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -165,15 +166,26 @@ public class FormularioModificarVisualizarContarPersonal extends javax.swing.JFr
 
         jPanel2.setBackground(new java.awt.Color(47, 106, 135));
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jButton3.setText("<");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jButton3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(110, 178, 204));
@@ -443,9 +455,15 @@ public class FormularioModificarVisualizarContarPersonal extends javax.swing.JFr
             JOptionPane.showMessageDialog(this, mensagem, "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

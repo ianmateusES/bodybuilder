@@ -7,6 +7,7 @@ package controle.personal;
 
 import dao.mysql.personal.PersonalAlunoDAO;
 import interfaces.entidades.IAluno;
+import interfaces.entidades.IPersonal;
 import java.util.ArrayList;
 
 /**
@@ -15,11 +16,13 @@ import java.util.ArrayList;
  */
 public class PersonalAlunoControle{
     private IAluno aluno;
+    private IPersonal personal;
     private PersonalAlunoDAO personal_dao;
     
-    public PersonalAlunoControle(IAluno aluno){
+    public PersonalAlunoControle(IPersonal personal, IAluno aluno){
+        this.personal = personal;
         this.aluno = aluno;
-        personal_dao = new PersonalAlunoDAO(aluno);
+        personal_dao = new PersonalAlunoDAO(personal, aluno);
     }
     
     public String preCadastrarAluno() {
@@ -40,28 +43,8 @@ public class PersonalAlunoControle{
             return mensagem;
         }
         
-        if(aluno.getAnamnese().getAlergias().isEmpty()){
-            mensagem = "Erro: Variavel alergia vazia";
-            return mensagem;
-        }
-        
-        if(aluno.getAnamnese().getCirurgias().isEmpty()){
-            mensagem = "Erro: Variavel cirurgias vazia";
-            return mensagem;            
-        }
-     
-        if(aluno.getAnamnese().getMedicamentos().isEmpty()){
-            mensagem = "Erro: Variavel medicamentos vazia";
-            return mensagem;   
-        }
-        
-        if(aluno.getAnamnese().getVicios().isEmpty()){
-            mensagem = "Erro: Variavel vicios vazia";
-            return mensagem;   
-        }
-        
         if(!personal_dao.preCadastrarAluno()){
-            mensagem = "Erro: Variavel pré cadastrar vazia";
+            mensagem = "Erro: email já usado";
             return mensagem;  
         }
         return mensagem;
@@ -74,7 +57,18 @@ public class PersonalAlunoControle{
             System.err.println("Erro: Erro listar alunos");
             return null;
         }
+        
         return alunos;
+    }
+    
+    public String atulizarAnamnese() {
+        String mensagem = "sucesso";
+        
+        if(!personal_dao.atualizarAnamnese()){
+            mensagem = "Erro: atualização de anamnese";
+            return mensagem;  
+        }
+        return mensagem;
     }
 
     

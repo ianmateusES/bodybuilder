@@ -25,11 +25,10 @@ public class PersonalAlunoAvaliacaoFisicaDAO {
         ResultSet rs = null;
         
         try {
-            String sql = "INSERT INTO TB_AvaliacaoAluno VALUES(0,? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into avaliacao(altura, peso, femur, punho, peitoral, cintura, abdomen, quadril, coxas, panturrilha, ombro, braco_relaxado, braco_contraido, antebraco, biceps, triceps, abdominal, auxiliarmedio, suprailiaca, panturrilhamedial, subespular, torax, coxa) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             conector = con.AbrirConexao();
-            pst = conector.prepareStatement(sql);
-            
+            pst = conector.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pst.setFloat(1, avaliacao.getAltura());
             pst.setFloat(2, avaliacao.getPeso());
             pst.setFloat(3, avaliacao.getFemur());
@@ -54,12 +53,18 @@ public class PersonalAlunoAvaliacaoFisicaDAO {
             pst.setFloat(22, avaliacao.getTorax());
             pst.setFloat(23, avaliacao.getCoxa());
             
-            pst.executeUpdate();
+            if(!(pst.executeUpdate() > 0)) return false;
             
-            sql = "INSERT INTO TB_Aluno_AvaliacaoAluno(id_avaliacao, id_aluno, data) VALUES (LAST_INSERT_ID(), ?, NOW())";
+            rs = pst.getGeneratedKeys();
+            rs.next();
+            int id_avaliacao = rs.getInt(1);
+            
+            sql = "insert into aluno_avaliacao(id_avaliacao, id_aluno) values (?, ?);";
             pst = conector.prepareStatement(sql);
-            pst.setInt(1, aluno.getId_aluno());
-            pst.executeUpdate();
+            pst.setInt(1, id_avaliacao);
+            pst.setInt(2, aluno.getId_aluno());
+            
+            if(!(pst.executeUpdate() > 0)) return false;
             
             pst.close();
             con.FecharConexao(conector);
@@ -72,20 +77,22 @@ public class PersonalAlunoAvaliacaoFisicaDAO {
         return retorno;
     }
     
-    public AvaliacaoFisicaAluno visualizarAvaliacao(){ // TA: id_avaliacaoAluno; TAV: id_avaliacao
-        String sql = "SELECT * FROM TB_AvaliacaoAluno INNER JOIN TB_Aluno_AvaliacaoAluno ON TB_AvaliacaoAluno.id_avaliacaoAluno = TB_Aluno_AvaliacaoAluno.id_avaliacao INNER JOIN TB_Aluno ON TB_Aluno.id_aluno = TB_Aluno_AvaliacaoAluno.id_aluno WHERE TB_Aluno.id_aluno='"+aluno.getId_aluno()+"' ORDER BY TB_Aluno_AvaliacaoAluno.data DESC";
-        
+    public boolean visualizarAvaliacao(){ // TA: id_avaliacaoAluno; TAV: id_avaliacao       
         java.sql.Connection conector = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
-        AvaliacaoFisicaAluno avaliacao = new AvaliacaoFisicaAluno();
-
+        
         try {
-            conector = con.AbrirConexao();
-            pst = conector.prepareStatement(sql);
-            rs = pst.executeQuery();
+            String sql = "select a2.*, aa.data from aluno a join aluno_avaliacao aa on (a.id_aluno = aa.id_aluno) join avaliacao a2 on (aa.id_avaliacao = a2.id_avaliacao) where a.id_aluno = ? order by a2.id_avaliacao desc limit 1;";
             
+            conector = con.AbrirConexao();
+            
+            pst = conector.prepareStatement(sql);
+            pst.setInt(1, aluno.getId_aluno());
+            
+            rs = pst.executeQuery();
             rs.next();
+            
             avaliacao.setAltura(rs.getFloat("altura"));
             avaliacao.setPeso(rs.getFloat("peso"));
             avaliacao.setFemur(rs.getFloat("femur"));
@@ -110,7 +117,6 @@ public class PersonalAlunoAvaliacaoFisicaDAO {
             avaliacao.setTorax(rs.getFloat("torax"));
             avaliacao.setCoxa(rs.getFloat("coxa"));
             avaliacao.setData(rs.getTimestamp("data") + "");
-
             
             pst.close();
             rs.close();
@@ -118,9 +124,10 @@ public class PersonalAlunoAvaliacaoFisicaDAO {
             
         } catch(Exception e){
             System.err.println("" + e.getMessage());
+            return false;
         }
         
-        return avaliacao;
+        return true;
     }
 
 }

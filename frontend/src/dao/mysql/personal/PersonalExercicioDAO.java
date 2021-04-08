@@ -62,7 +62,7 @@ public class PersonalExercicioDAO {
         
         try {
             conector = con.AbrirConexao();
-            String sql = "update exercicio e set e.nome = ?, e.categoria = ? where e.id_exercicio = ? and e.id_personal = ?";
+            String sql = "update exercicio set nome = ?, categoria = ? where id_exercicio = ? and id_personal = ?";
                     
             pst = conector.prepareStatement(sql);
             
@@ -71,7 +71,7 @@ public class PersonalExercicioDAO {
             pst.setInt(3, exercicio.getId_exercicio());
             pst.setInt(4, personal.getId_personal());
             
-            retorno = pst.execute();
+            retorno = !pst.execute();
             pst.close();
             con.FecharConexao(conector);
         }catch(Exception e) {
@@ -88,7 +88,7 @@ public class PersonalExercicioDAO {
         try {
             conector = con.AbrirConexao();
             
-            String sql = "select e.id_exercicio, e.nome, e.categoria from exercicio e where e.id_personal = ?;";
+            String sql = "select e.id_exercicio, e.nome, e.categoria from exercicio e where e.id_personal = ? order by e.id_exercicio;";
             
             pst = conector.prepareStatement(sql);
             pst.setInt(1, personal.getId_personal());

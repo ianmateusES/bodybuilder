@@ -26,6 +26,9 @@ public class FormularioModificarExercicio extends javax.swing.JFrame {
         this.exercicio = exercicio;
         controle = new PersonalExercicioControle(personal, exercicio);
         initComponents();
+        if(this.exercicio != null) {
+            preencherCampos();
+        }
     }
 
     /**
@@ -169,13 +172,18 @@ public class FormularioModificarExercicio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void preencherCampos() {
+        jTextField1.setText(this.exercicio.getExercicio());
+        jTextField2.setText(this.exercicio.getCategoria());
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         exercicio.setExercicio(jTextField1.getText());
         exercicio.setCategoria(jTextField2.getText());
         
-        String mensagem = controle.cadastrarExercicio();
+        String mensagem = controle.alterarExercicio();
         if(mensagem.equals("sucesso")){
-            JOptionPane.showMessageDialog(this, "Exercicio Cadastrado com sucesso", "Mensagem do Sistema", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Exercicio Alterdo com sucesso", "Mensagem do Sistema", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         }else{
             JOptionPane.showMessageDialog(this, mensagem, "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
@@ -183,8 +191,7 @@ public class FormularioModificarExercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
-        
+           
     }//GEN-LAST:event_jTextField1ActionPerformed
 
 

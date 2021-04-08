@@ -15,7 +15,8 @@ public class AlunoPadrao extends Pessoa implements IAluno{
     public AlunoPadrao() {};
     
     private int id_aluno;
-    private Anamnese anamnese;    
+    private Anamnese anamnese; 
+    private String celular;
 
     
     public int getId_aluno() {
@@ -24,5 +25,15 @@ public class AlunoPadrao extends Pessoa implements IAluno{
 
     public void setId_aluno(int id_aluno) {
         this.id_aluno = id_aluno;
+    }
+
+    @Override
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    @Override
+    public String getCelular() {
+        return celular;
     }
 }

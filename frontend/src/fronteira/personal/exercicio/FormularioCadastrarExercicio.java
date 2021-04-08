@@ -21,7 +21,7 @@ public class FormularioCadastrarExercicio extends javax.swing.JFrame {
      */
     PersonalExercicioControle controle;
     Exercicio exercicio;
-    public FormularioCadastrarExercicio() {}
+
     public FormularioCadastrarExercicio(IPersonal personal) {
         exercicio = new Exercicio();
         controle = new PersonalExercicioControle(personal, exercicio);
