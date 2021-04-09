@@ -5,7 +5,9 @@
  */
 package fronteira.personal.aluno;
 
+import fronteira.personal.fichatreino.FormularioCadastrarTreino;
 import interfaces.entidades.IAluno;
+import interfaces.entidades.IPersonal;
 
 /**
  *
@@ -17,8 +19,10 @@ public class MenuVisualizarAlunoPersonal extends javax.swing.JFrame {
      * Creates new form VisualizarAluno
      */
     IAluno aluno;
-    public MenuVisualizarAlunoPersonal(IAluno aluno) {
+    IPersonal personal;
+    public MenuVisualizarAlunoPersonal(IPersonal personal, IAluno aluno) {
         this.aluno = aluno;
+        this.personal = personal;
         initComponents();
         jLabel1.setText("Adiministrar: "+aluno.getNome());
     }
@@ -63,7 +67,7 @@ public class MenuVisualizarAlunoPersonal extends javax.swing.JFrame {
         jButton8.setBackground(new java.awt.Color(110, 178, 204));
         jButton8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jButton8.setForeground(new java.awt.Color(47, 106, 135));
-        jButton8.setText("Ficha Treino Aluno");
+        jButton8.setText("Visualizar treinos");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -180,26 +184,28 @@ public class MenuVisualizarAlunoPersonal extends javax.swing.JFrame {
 
     
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new VisualizarTreinosAluno(personal, aluno).setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         this.dispose();
-        new FormularioVisualizarAvaliacaoFisicaAluno(aluno).setVisible(true);
+        new FormularioVisualizarAvaliacaoFisicaAluno(personal, aluno).setVisible(true);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         this.dispose();
-        new FormularioFazerAvaliacaoFisicaAluno(aluno).setVisible(true);
+        new FormularioFazerAvaliacaoFisicaAluno(personal, aluno).setVisible(true);
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new FormularioModificarVisualizarAnamnese(aluno).setVisible(true);
+        new FormularioModificarVisualizarAnamnese(personal, aluno).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
+        new VisualizarAlunos(personal).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

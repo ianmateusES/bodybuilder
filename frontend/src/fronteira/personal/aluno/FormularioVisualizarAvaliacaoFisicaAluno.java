@@ -8,6 +8,7 @@ package fronteira.personal.aluno;
 import Entidade.AvaliacaoFisicaAluno;
 import controle.personal.PersonalAlunoAvaliacaoFisicaControle;
 import interfaces.entidades.IAluno;
+import interfaces.entidades.IPersonal;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,12 +21,14 @@ public class FormularioVisualizarAvaliacaoFisicaAluno extends javax.swing.JFrame
      * Creates new form MenuFazerAvaliacaoFisicaPersonal
      */
     
+    private IPersonal personal;
     IAluno aluno = null;
     AvaliacaoFisicaAluno avaliacao = null;
     PersonalAlunoAvaliacaoFisicaControle controleAluno = null;
     
-    public FormularioVisualizarAvaliacaoFisicaAluno(IAluno aluno) {
+    public FormularioVisualizarAvaliacaoFisicaAluno(IPersonal personal, IAluno aluno) {
         this.aluno = aluno;
+        this.personal = personal;
         avaliacao = new AvaliacaoFisicaAluno();
         controleAluno = new PersonalAlunoAvaliacaoFisicaControle(this.aluno, avaliacao);
         String mensage = controleAluno.visualizarAvaliacao();
@@ -711,7 +714,7 @@ public class FormularioVisualizarAvaliacaoFisicaAluno extends javax.swing.JFrame
     }//GEN-LAST:event_jFormattedTextField5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
+        new MenuVisualizarAlunoPersonal(personal, aluno).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
