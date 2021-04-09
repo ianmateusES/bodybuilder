@@ -68,7 +68,5 @@ public class Anamnese {
     private String medicamentos;
     private String vicios;
     private String observacoes;
-
-    public Anamnese(){}
     
 }
