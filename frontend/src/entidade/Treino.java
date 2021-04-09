@@ -5,15 +5,36 @@
  */
 package entidade;
 
+import interfaces.entidades.IAluno;
+import interfaces.entidades.IPersonal;
 import java.util.ArrayList;
 /**
  *
  * @author 55859
  */
 public class Treino {
+    
     private int id_treino;
+    private IPersonal personal;
+    private IAluno aluno;
     private ArrayList<ExercicioTreino> exercicioTreino;
     private String objetivo;
+   
+    public IPersonal getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(IPersonal personal) {
+        this.personal = personal;
+    }
+
+    public IAluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(IAluno aluno) {
+        this.aluno = aluno;
+    }
 
     public int getId_treino() {
         return id_treino;

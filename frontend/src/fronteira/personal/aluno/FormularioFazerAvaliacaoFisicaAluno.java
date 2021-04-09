@@ -8,6 +8,7 @@ package fronteira.personal.aluno;
 import Entidade.AvaliacaoFisicaAluno;
 import controle.personal.PersonalAlunoAvaliacaoFisicaControle;
 import interfaces.entidades.IAluno;
+import interfaces.entidades.IPersonal;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,11 +20,13 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
     /**
      * Creates new form MenuFazerAvaliacaoFisicaPersonal
      */
+    private IPersonal persoanl;
     private IAluno aluno;
     private AvaliacaoFisicaAluno avaliacao;
     private PersonalAlunoAvaliacaoFisicaControle controleAluno;
     
-    public FormularioFazerAvaliacaoFisicaAluno(IAluno aluno) {
+    public FormularioFazerAvaliacaoFisicaAluno(IPersonal persoanl, IAluno aluno) {
+        this.persoanl = persoanl;
         this.aluno = aluno;
         avaliacao = new AvaliacaoFisicaAluno();
         controleAluno = new PersonalAlunoAvaliacaoFisicaControle(aluno, avaliacao);
@@ -685,7 +688,7 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
 
             if(mensagem.equalsIgnoreCase("sucesso")){
                 JOptionPane.showMessageDialog(this, "Cadastro realiazado com sucesso\n", "Mensagem do Sistema", JOptionPane.INFORMATION_MESSAGE);
-                new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
+                new MenuVisualizarAlunoPersonal(persoanl, aluno).setVisible(true);
                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(this, mensagem, "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
@@ -700,7 +703,7 @@ public class FormularioFazerAvaliacaoFisicaAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormattedTextField5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
+        new MenuVisualizarAlunoPersonal(persoanl, aluno).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

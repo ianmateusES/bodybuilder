@@ -8,6 +8,7 @@ package fronteira.personal.aluno;
 import controle.personal.PersonalAlunoControle;
 import entidade.Anamnese;
 import interfaces.entidades.IAluno;
+import interfaces.entidades.IPersonal;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,14 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class FormularioModificarVisualizarAnamnese extends javax.swing.JFrame {
     
+    private IPersonal personal;
     private IAluno aluno;
     private PersonalAlunoControle personalAlunoControler;
 
     /**
      * Creates new form FormularioModificarAnamnese
      */
-    public FormularioModificarVisualizarAnamnese(IAluno aluno) {
+    public FormularioModificarVisualizarAnamnese(IPersonal personal, IAluno aluno) {
         personalAlunoControler = new PersonalAlunoControle(null, aluno);
+        this.personal = personal;
         this.aluno = aluno;
         initComponents();
         
@@ -272,7 +275,7 @@ public class FormularioModificarVisualizarAnamnese extends javax.swing.JFrame {
         String mensagem = personalAlunoControler.atulizarAnamnese();
         if(mensagem.equalsIgnoreCase("sucesso")){
             JOptionPane.showMessageDialog(this, "Anamnese alterada com sucesso!\n", "Mensagem do Sistema", JOptionPane.INFORMATION_MESSAGE);
-            new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
+            new MenuVisualizarAlunoPersonal(personal, aluno).setVisible(true);
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(this, mensagem, "Mensagem do Sistema", JOptionPane.ERROR_MESSAGE);
@@ -280,7 +283,7 @@ public class FormularioModificarVisualizarAnamnese extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new MenuVisualizarAlunoPersonal(aluno).setVisible(true);
+        new MenuVisualizarAlunoPersonal(personal, aluno).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

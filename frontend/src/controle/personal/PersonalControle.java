@@ -106,6 +106,7 @@ public class PersonalControle{
         }
         return mensagem;
     }
+    
     public IPersonal visualizarConta(){
         personal_dao.visualizarConta();
         if(personal == null){
@@ -113,6 +114,7 @@ public class PersonalControle{
         }
         return personal;
     }
+    
     public String alterarConta() {
         String mensagem = "sucesso";
 
