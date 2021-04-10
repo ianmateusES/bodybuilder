@@ -6,10 +6,7 @@
 package dao.mysql.personal;
 
 import dao.ConexaoSqlDAO;
-import entidade.AlunoPadrao;
-import entidade.Exercicio;
-import entidade.ExercicioTreino;
-import entidade.Treino;
+import entidade.*;
 import interfaces.entidades.IAluno;
 import interfaces.entidades.IPersonal;
 import java.sql.PreparedStatement;
@@ -206,7 +203,7 @@ public class TreinoDAO {
         ArrayList<Treino> treinos = new ArrayList<Treino>();
         try {
             conector = con.AbrirConexao();
-            String sql = "select t.*, u.name from treino t join aluno a on (t.id_aluno = a.id_aluno) join usuario u on (a.id_usuario = u.id_usuario) where t.id_personal = ? order by t.id_treino desc;";
+            String sql = "select t.*, u.nome from treino t join aluno a on (t.id_aluno = a.id_aluno) join usuario u on (a.id_usuario = u.id_usuario) where t.id_personal = ? order by t.id_treino desc;";
             pst = conector.prepareStatement(sql);
             pst.setInt(1, personal.getId_personal());
             rs = pst.executeQuery();
@@ -222,7 +219,7 @@ public class TreinoDAO {
                 aluno.setNome(rs.getString("nome"));
                 aluno.setId_aluno(rs.getInt("id_aluno"));
                 newTreino.setAluno(aluno);
-                newTreino.setObjetivo(rs.getString("descricao"));
+                newTreino.setObjetivo(rs.getString("objetivo"));
 
                 sql = "select * from exercicio_treino et join exercicio e on (et.id_exercicio = e.id_exercicio) where et.id_treino = ?;";
                 pstExercicio = conector.prepareStatement(sql);
