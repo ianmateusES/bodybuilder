@@ -48,6 +48,19 @@ O Bodybuilder é um software de auxílio a personais e nutricionistas no acompan
   <img src="./docs/.github/youtube.jpeg">
 </a>
 
+## 🤖 Execução
+Para execução do projeto, primeiro é preciso executar o banco de dados para que o frontend possa se comunicar. Uma opção para o banco de dados, é rodar uma imagem docker do postgres. 
+```
+   docker run --name bodybuilder -e POSTGRES_USER=body -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres:13-alpine
+```
+Colocar as configurações de comunicação com o banco no arquivo que se encontra em `src/dao/ConexaoSqlDAO.java`. Modifique as seguintes váriveis de acordo os dados de comunicaçação.
+```
+   String url = "jdbc:postgresql://localhost:5432/body";
+   String user = "body";
+   String password = "123456";
+```
+Depois, execute o código e desfrute das funcionalidades.
+
 ## 📁 Documentação do projeto
   
   <a href="./.github/documents/">Súmario de documentação do projeto</a>
