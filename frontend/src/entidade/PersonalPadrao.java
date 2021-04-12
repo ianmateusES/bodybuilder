@@ -1,9 +1,8 @@
 package entidade;
 
-import util.Pessoa;
-import interfaces.entidades.IPersonal;
+import interfaces.IPersonal;
 import util.Endereco;
-
+import util.Pessoa;
 
 public class PersonalPadrao extends Pessoa implements IPersonal{
 

@@ -1,7 +1,8 @@
 package entidade;
 
+import interfaces.IAluno;
 import util.Pessoa;
-import interfaces.entidades.IAluno;
+
 
 public class AlunoPadrao extends Pessoa implements IAluno{
 

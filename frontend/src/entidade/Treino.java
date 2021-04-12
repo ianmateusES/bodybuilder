@@ -5,9 +5,10 @@
  */
 package entidade;
 
-import interfaces.entidades.IAluno;
-import interfaces.entidades.IPersonal;
+import interfaces.IAluno;
+import interfaces.IPersonal;
 import java.util.ArrayList;
+
 /**
  *
  * @author 55859
