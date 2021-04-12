@@ -1,5 +1,5 @@
 <h1 align="center">
-   <a href="https://ianmateuses.github.io/bodybuilder/">💪 Bodybuilder</a>
+   <a href="https://ianmateuses.github.io/bodybuilder/"><img alt="Logo" src="./.github/assets/logo-p.png"></a>
 </h1>
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ianmateusES/bodybuilder.svg">
@@ -36,7 +36,7 @@
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [Node.js](https://nodejs.org/en/)
+<!-- [Node.js](https://nodejs.org/en/) -->
 - [Java](https://www.oracle.com/br/java/technologies/)
 <!-- - [Electron](https://www.electronjs.org) -->
 
@@ -49,17 +49,11 @@ O Bodybuilder é um software de auxílio a personais e nutricionistas no acompan
 </a>
 
 ## 🤖 Execução
-Para execução do projeto, primeiro é preciso executar o banco de dados para que o frontend possa se comunicar. Uma opção para o banco de dados, é rodar uma imagem docker do postgres. 
+Para execução do projeto, primeiro é preciso executar o banco de dados para que o aplicação possa se comunicar. Uma opção para o banco de dados, é rodar uma imagem docker do postgres. 
 ```
    docker run --name bodybuilder -e POSTGRES_USER=body -e POSTGRES_PASSWORD=123456 -p 5432:5432 -d postgres:13-alpine
 ```
-Colocar as configurações de comunicação com o banco no arquivo que se encontra em `src/dao/ConexaoSqlDAO.java`. Modifique as seguintes váriveis de acordo os dados de comunicaçação.
-```
-   String url = "jdbc:postgresql://localhost:5432/body";
-   String user = "body";
-   String password = "123456";
-```
-Depois, execute o código e desfrute das funcionalidades.
+Depois, criar as tabelas dentro da container gerado usando o sql que se encontra em `./frontend/bd/table_bd.sql`. E executar o executavel da aplicação que se encontra em `./executable/body.jar` .
 
 ## 📁 Documentação do projeto
   
